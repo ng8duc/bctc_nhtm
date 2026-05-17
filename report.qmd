@@ -41,8 +41,15 @@ D1_DATABASE <- Sys.getenv("D1_DATABASE")
 ```{r load-data}
 df <- pull_from_d1(db_name = D1_DATABASE, table_name = "tts")
 
-# Chuyển cột yq sang Date
-df <- df %>% mutate(yq = as.Date(yq))
+# Chuyển cột yq sang Date một cách an toàn (tránh lỗi định dạng hoặc kiểu list/NA từ DB)
+safe_to_date <- function(x) {
+  if (is.list(x)) {
+    x <- sapply(x, function(el) if (is.null(el) || length(el) == 0) NA else el)
+    x <- unlist(x)
+  }
+  as.Date(as.character(x))
+}
+df <- df %>% mutate(yq = safe_to_date(yq))
 
 df <- df %>%
     group_by(name) %>%
