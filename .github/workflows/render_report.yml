@@ -47,6 +47,21 @@ jobs:
         run: |
           quarto render report.qmd
 
+      - name: Prepare build directory
+        run: |
+          mkdir -p build
+          cp report.html build/index.html
+          cp report.html build/report.html
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: bctc-nhtm # Can be customized to your Pages project name
+          directory: build
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Upload Report HTML as Artifact
         uses: actions/upload-artifact@v4
         with:
