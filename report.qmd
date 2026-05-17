@@ -1,0 +1,125 @@
+---
+title: "Chỉ tiêu tài chính các NHTM"
+format:
+  html:
+    embed-resources: true
+    theme: flatty
+    toc: true
+    toc-location: left
+execute:
+  echo: false    # Không hiển thị code cho TOÀN BỘ các chunk
+  warning: false
+---
+
+```{css, echo=FALSE}
+.js-plotly-plot .textpoint text {
+  stroke: #ffffff !important;
+  stroke-width: 2.5px !important;
+  paint-order: stroke fill !important;
+}
+```
+
+```{r setup, include=FALSE}
+library(jsonlite)
+library(glue)
+library(tidyverse)
+library(plotly)
+library(dotenv)
+
+load_dot_env()
+
+source("R/pull_from_d1.R")
+
+D1_DATABASE <- Sys.getenv("D1_DATABASE")
+```
+
+## An toàn vốn
+
+## Quy mô - Thị phần
+### Tổng tài sản
+
+```{r load-data}
+df <- pull_from_d1(db_name = D1_DATABASE, table_name = "tts")
+
+# Chuyển cột yq sang Date
+df <- df %>% mutate(yq = as.Date(yq))
+
+df <- df %>%
+    group_by(name) %>%
+    arrange(yq) %>%
+    mutate(
+        yoy_growth_rate = value / lag(value, 4) - 1,
+        ytd_growth_rate = value / value[match(as.Date(paste0(as.integer(format(yq, "%Y")) - 1, "-10-01")), yq)] - 1
+    ) %>%
+    ungroup()
+```
+
+```{r plot-timeseries}
+df_long <- df %>%
+    filter(nchar(name) == 3) %>%
+    filter(yq == as.Date("2026-01-01")) %>%
+    arrange(desc(value)) %>%
+    mutate(name = factor(name, levels = name))
+
+mau_cot <- ifelse(df_long$name != "BID", "#006b68", "#fdb71a")
+
+plot_ly(df_long) %>%
+    add_trace(
+        x = ~name,
+        y = ~ value / 1000,
+        text = ~ value / 1000,
+        textposition = "outside",
+        texttemplate = "%{text:,.1f}",
+        textfont = list(size = 10),
+        name = "Tổng tài sản",
+        marker = list(color = mau_cot),
+        type = "bar"
+    ) %>%
+    add_trace(
+        x = ~name,
+        y = ~ytd_growth_rate,
+        text = ~ytd_growth_rate,
+        textposition = "top center",
+        texttemplate = "%{text:,.1%}",
+        textfont = list(color = "red", size = 12),
+        name = "Tăng trưởng",
+        marker = list(color = "red", line = list(color = "white", width = 2)),
+        type = "scatter",
+        mode = "markers+text",
+        yaxis = "y2"
+    ) %>%
+    layout(
+        font = list(family = "Arial"),
+        xaxis = list(
+            title = "Ngân hàng",
+            ticks = ""
+        ),
+        yaxis = list(
+            title = list(text = "Tổng tài sản (nghìn tỷ đồng)", standoff = 15),
+            automargin = TRUE,
+            tickformat = ".1f",
+            # showticklabels = FALSE,
+            showgrid = FALSE,
+            zeroline = FALSE
+        ),
+        yaxis2 = list(
+            title = list(text = "Tăng trưởng ytd (%)", standoff = 15),
+            automargin = TRUE,
+            overlaying = "y", # Đè lên trục y chính thay vì tách đôi màn hình
+            side = "right",
+            tickformat = ".1%",
+            # showticklabels = FALSE,
+            showgrid = FALSE,
+            zeroline = FALSE
+        ),
+        legend = list(
+            orientation = "h",
+            x = 0.5,
+            xanchor = "center",
+            y = 1.1,
+            yanchor = "bottom"
+        ),
+        separators = ",.",
+        hovermode = "x unified"
+    )
+```
