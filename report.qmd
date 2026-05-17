@@ -41,6 +41,11 @@ D1_DATABASE <- Sys.getenv("D1_DATABASE")
 ```{r load-data}
 df <- pull_from_d1(db_name = D1_DATABASE, table_name = "tts")
 
+# Kiểm tra dữ liệu rỗng và báo lỗi rõ ràng nếu cấu hình credentials sai hoặc thiếu bảng
+if (is.null(df) || nrow(df) == 0) {
+  stop("LỖI: Dữ liệu tải về từ Cloudflare D1 trống rỗng! Vui lòng kiểm tra lại cấu hình CLOUDFLARE_API_TOKEN và CLOUDFLARE_ACCOUNT_ID trong GitHub Secrets của bạn.")
+}
+
 # Chuyển cột yq sang Date một cách an toàn (tránh lỗi định dạng hoặc kiểu list/NA từ DB)
 safe_to_date <- function(x) {
   if (is.list(x)) {
