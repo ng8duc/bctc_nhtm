@@ -12,3 +12,6 @@
 .Rhistory
 .RData
 .Rproj.user/
+
+# AI Agents
+.agents/

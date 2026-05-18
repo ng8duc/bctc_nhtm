@@ -36,6 +36,7 @@ D1_DATABASE <- Sys.getenv("D1_DATABASE")
 ## An toàn vốn
 
 ## Quy mô - Thị phần
+
 ### Tổng tài sản
 
 ```{r load-data}
@@ -43,16 +44,16 @@ df <- pull_from_d1(db_name = D1_DATABASE, table_name = "tts")
 
 # Kiểm tra dữ liệu rỗng và báo lỗi rõ ràng nếu cấu hình credentials sai hoặc thiếu bảng
 if (is.null(df) || nrow(df) == 0) {
-  stop("LỖI: Dữ liệu tải về từ Cloudflare D1 trống rỗng! Vui lòng kiểm tra lại cấu hình CLOUDFLARE_API_TOKEN và CLOUDFLARE_ACCOUNT_ID trong GitHub Secrets của bạn.")
+    stop("LỖI: Dữ liệu tải về từ Cloudflare D1 trống rỗng! Vui lòng kiểm tra lại cấu hình CLOUDFLARE_API_TOKEN và CLOUDFLARE_ACCOUNT_ID trong GitHub Secrets của bạn.")
 }
 
 # Chuyển cột yq sang Date một cách an toàn (tránh lỗi định dạng hoặc kiểu list/NA từ DB)
 safe_to_date <- function(x) {
-  if (is.list(x)) {
-    x <- sapply(x, function(el) if (is.null(el) || length(el) == 0) NA else el)
-    x <- unlist(x)
-  }
-  as.Date(as.character(x))
+    if (is.list(x)) {
+        x <- sapply(x, function(el) if (is.null(el) || length(el) == 0) NA else el)
+        x <- unlist(x)
+    }
+    as.Date(as.character(x))
 }
 df <- df %>% mutate(yq = safe_to_date(yq))
 
@@ -111,8 +112,7 @@ plot_ly(df_long) %>%
             automargin = TRUE,
             tickformat = ".1f",
             # showticklabels = FALSE,
-            showgrid = FALSE,
-            zeroline = FALSE
+            showgrid = FALSE
         ),
         yaxis2 = list(
             title = list(text = "Tăng trưởng ytd (%)", standoff = 15),
@@ -133,5 +133,67 @@ plot_ly(df_long) %>%
         ),
         separators = ",.",
         hovermode = "x unified"
+    )
+```
+
+## Hiệu quả sinh lời
+### NIM và chênh lệch lãi suất đầu ra - đầu vào
+
+```{r}
+df_nim <- pull_from_d1(db_name = D1_DATABASE, table_name = "nim") %>%
+    mutate(yq = as.Date(yq)) %>%
+    mutate(chi_tieu = "NIM")
+
+df_clls <- pull_from_d1(db_name = D1_DATABASE, table_name = "chenh_lech_lai_suat_dau_ra_dau_vao") %>%
+    mutate(yq = as.Date(yq)) %>%
+    mutate(chi_tieu = "CLLS")
+
+df_full <- bind_rows(df_nim, df_clls) %>%
+    filter(name == "BQ 27 NHTM") %>%
+    filter(!is.na(value))
+```
+
+```{r}
+tick_vals <- df_full %>%
+    distinct(yq) %>%
+    arrange(yq) %>%
+    filter(month(yq) == month(first(yq))) %>%
+    pull(yq)
+
+tick_labels <- str_c(3 * quarter(tick_vals), "T_", year(tick_vals))
+
+plot_ly(df_full, colors = c("#006b68", "#fdb71a")) %>%
+    add_trace(
+        x = ~yq,
+        y = ~value,
+        color = ~chi_tieu,
+        type = "scatter",
+        mode = "lines+markers",
+        hoverlabel = list(align = "left"),
+        hovertemplate = ~ str_c(
+            "<b>Kỳ: ", 3 * quarter(yq), "T_", year(yq), "</b><br>",
+            "Chỉ tiêu: ", chi_tieu, "<br>",
+            "Giá trị: ", sprintf("%.1f%%", value * 100),
+            "<extra></extra>"
+        )
+    ) %>%
+    layout(
+        xaxis = list(
+            title = "",
+            tickmode = "array",
+            tickvals = tick_vals,
+            ticktext = tick_labels
+        ),
+        yaxis = list(
+            title = "",
+            tickformat = ".1%"
+        ),
+        legend = list(
+            orientation = "h",
+            x = 0.5,
+            xanchor = "center",
+            y = 1.1,
+            yanchor = "bottom"
+        )
     )
 ```
