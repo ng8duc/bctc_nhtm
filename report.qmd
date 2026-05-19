@@ -30,7 +30,7 @@ source("R/get_all_tables.R")
 
 ### Tổng tài sản
 
-```{r, echo=FALSE}
+```{r}
 source("charts/tong_tai_san.R")
 ```
 
@@ -38,6 +38,6 @@ source("charts/tong_tai_san.R")
 
 ### NIM và chênh lệch lãi suất đầu ra - đầu vào
 
-```{r, echo=FALSE}
+```{r}
 source("charts/nim.R")
 ```
