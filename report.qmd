@@ -32,6 +32,7 @@ source("R/get_all_tables.R")
 
 ```{r}
 source("charts/tong_tai_san.R")
+chart_tts
 ```
 
 ## Hiệu quả sinh lời
@@ -40,4 +41,5 @@ source("charts/tong_tai_san.R")
 
 ```{r}
 source("charts/nim.R")
+chart_nim
 ```

@@ -20,7 +20,7 @@ df_long <- df %>%
     ytd_growth_rate = ytd_growth_rate * 100
   )
 
-chart <- highchart() %>%
+chart_tts <- highchart() %>%
   hc_yAxis_multiples(
     list(
       title = list(text = "Tổng tài sản"),
@@ -84,5 +84,3 @@ chart <- highchart() %>%
     symbolRadius = 0
   ) %>%
   hc_chart(zoomType = "x")
-
-print(chart)

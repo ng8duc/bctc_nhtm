@@ -16,7 +16,7 @@ tick_vals <- df %>%
 
 tick_labels <- str_c(3 * quarter(tick_vals), "T_", year(tick_vals))
 
-chart <- plot_ly(df, colors = c("#006b68", "#fdb71a")) %>%
+chart_nim <- plot_ly(df, colors = c("#006b68", "#fdb71a")) %>%
   add_trace(
     x = ~yq,
     y = ~value,
@@ -50,5 +50,3 @@ chart <- plot_ly(df, colors = c("#006b68", "#fdb71a")) %>%
       yanchor = "bottom"
     )
   )
-
-print(chart)
