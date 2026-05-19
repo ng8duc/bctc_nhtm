@@ -106,7 +106,7 @@ highchart() %>%
     ) %>%
     hc_add_series(
         data = df_long,
-        mapping = hcaes(x = name, y = value, color = mau_cot),
+        mapping = hcaes(x = name, y = value/1000, color = mau_cot),
         type = "column",
         name = "Tổng tài sản",
         color = "#006b68",
@@ -115,6 +115,9 @@ highchart() %>%
             enabled = TRUE,
             format = "{point.y:,.2f}", # Hiển thị nhãn giá trị với 2 chữ số thập phân
             style = list(fontSize = "10px")
+        ),
+        tooltip = list(
+          valueSuffix = " nghìn tỷ đồng"
         )
     ) %>%
     hc_add_series(
