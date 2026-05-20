@@ -39,7 +39,8 @@ chart_ty_le_no_xau <- highchart() %>%
   ) %>%
   hc_yAxis(
     title = list(text = "%"),
-    gridLineColor = "#e6e6e6"
+    gridLineColor = "#e6e6e6",
+    labels = list(format = "{value:,.1f}%")
   ) %>%
   hc_tooltip(
     shared = TRUE,

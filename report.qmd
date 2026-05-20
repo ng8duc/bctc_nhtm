@@ -9,14 +9,6 @@ execute:
   warning: false
 ---
 
-```{css, echo=FALSE}
-.js-plotly-plot .textpoint text {
-  stroke: #ffffff !important;
-  stroke-width: 2.5px !important;
-  paint-order: stroke fill !important;
-}
-```
-
 ```{r, echo=FALSE}
 source("R/config.R")
 source("R/get_all_tables.R")
@@ -73,8 +65,8 @@ chart_quy_mo_no_xau
 ### {width="33%"}
 
 ```{r}
-source("charts/ty_le_bao_phu_no_xau_chung.R")
-chart_ty_le_bao_phu_no_xau_chung
+source("charts/quy_mo_no_nhom_2.R")
+chart_quy_mo_no_nhom_2
 ```
 
 ## Row {height="50%"}
@@ -88,12 +80,41 @@ chart_ty_le_bao_phu_no_xau_rieng
 
 ### {width="67%"}
 
-::: {.card}
-**Chất lượng tài sản & Nợ xấu**
+```{r}
+source("charts/ty_le_bao_phu_no_xau_chung.R")
+chart_ty_le_bao_phu_no_xau_chung
+```
 
-*   **Tỷ lệ nợ xấu (NPL)**: Phản ánh tỷ lệ phần trăm nợ xấu trên tổng dư nợ.
-*   **Tỷ lệ bao phủ nợ xấu**: Thể hiện mức độ chuẩn bị phòng ngừa rủi ro của ngân hàng thông qua trích lập dự phòng.
-:::
+# Lợi nhuận
+
+## Row {height="50%"}
+
+### {width="50%"}
+```{r}
+source("charts/cltc.R")
+chart_cltc
+```
+
+### {width="50%"}
+```{r}
+source("charts/cltc_rieng.R")
+chart_cltc_rieng
+```
+
+## Row {height="50%"}
+
+### {width="50%"}
+```{r}
+source("charts/lntt.R")
+chart_lntt
+```
+
+### {width="50%"}
+```{r}
+source("charts/lntt_rieng.R")
+chart_lntt_rieng
+```
+
 
 # Hiệu quả sinh lời
 
@@ -113,3 +134,4 @@ chart_nim
 
 NIM (Net Interest Margin) là tỷ lệ thu nhập lãi thuần, đo lường sự chênh lệch giữa thu nhập lãi từ các tài sản sinh lời và chi phí lãi phải trả cho các nguồn vốn huy động.
 :::
+

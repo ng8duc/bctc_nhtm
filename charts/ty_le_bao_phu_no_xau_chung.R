@@ -8,11 +8,12 @@ chart_ty_le_bao_phu_no_xau_chung <- highchart() %>%
   hc_add_series(
     data = df,
     mapping = hcaes(x = yq, y = value * 100),
-    type = "column",
+    type = "line",
     name = "Tỷ lệ bao phủ nợ xấu (%)",
     tooltip = list(
       valueSuffix = "%"
-    )
+    ),
+    marker = list(enabled = TRUE, radius = 4)
   ) %>%
   hc_xAxis(
     type = "datetime",

@@ -1,4 +1,4 @@
-df1 <- df_quy_mo_no_xau %>% 
+df1 <- df_quy_mo_no_nhom_2 %>% 
   mutate(yq = as.Date(yq)) %>% 
   filter(nchar(name) == 3) %>% 
   filter(yq == as.Date("2026-01-01")) %>%
@@ -6,40 +6,40 @@ df1 <- df_quy_mo_no_xau %>%
   mutate(
     mau_cot = ifelse(name != "BID", "#006b68", "#fdb71a"),
   ) %>% 
-  rename(quy_mo_no_xau := value)
+  rename(quy_mo_no_nhom_2 := value)
 
-df2 <- df_ty_le_no_xau %>% 
+df2 <- df_ty_le_no_nhom_2 %>% 
   mutate(yq = as.Date(yq),
          value = value*100) %>% 
   filter(nchar(name) == 3) %>% 
   filter(yq == as.Date("2026-01-01")) %>% 
-  rename(ty_le_no_xau := value)
+  rename(ty_le_no_nhom_2 := value)
 
 df <- full_join(df1, df2)
 
-chart_quy_mo_no_xau <- highchart() %>%
+chart_quy_mo_no_nhom_2 <- highchart() %>%
   hc_yAxis_multiples(
     list(
-      title = list(text = "Quy mô nợ xấu (nghìn tỷ đồng)"),
+      title = list(text = "Quy mô nợ nhóm 2 (nghìn tỷ đồng)"),
       gridLineColor = "#e6e6e6"
     ),
     list(
-      title = list(text = "Tỷ lệ nợ xấu (%)"),
+      title = list(text = "Tỷ lệ nợ nhóm 2 (%)"),
       opposite = TRUE,
       gridLineWidth = 0, # Ẩn vạch kẻ ngang của trục thứ hai để tránh rối mắt
       labels = list(format = "{value:,.1f}%")
     )
   )%>%
   hc_xAxis(
-    categories = df$name,
+    categories = df1$name,
     gridLineWidth = 1,
     gridLineColor = "#e6e6e6"
   ) %>% 
   hc_add_series(
     data = df,
-    mapping = hcaes(x = name, y = quy_mo_no_xau / 1000, color = mau_cot),
+    mapping = hcaes(x = name, y = quy_mo_no_nhom_2 / 1000, color = mau_cot),
     type = "column",
-    name = "Quy mô nợ xấu",
+    name = "Quy mô nợ nhóm 2",
     color = "#006b68",
     yAxis = 0,
     dataLabels = list(
@@ -53,11 +53,11 @@ chart_quy_mo_no_xau <- highchart() %>%
   ) %>% 
   hc_add_series(
     data = df,
-    mapping = hcaes(x = name, y = ty_le_no_xau),
+    mapping = hcaes(x = name, y = ty_le_no_nhom_2),
     type = "line",
     lineWidth = 0,
     marker = list(enabled = TRUE, radius = 5),
-    name = "Tỷ lệ nợ xấu",
+    name = "Tỷ lệ nợ nhóm 2",
     yAxis = 1,
     dataLabels = list(
       enabled = TRUE,
@@ -82,10 +82,11 @@ chart_quy_mo_no_xau <- highchart() %>%
   ) %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
-    text = "Quy mô nợ xấu của 10 NHTM niêm yết",
+    text = "Quy mô nợ nhóm 2 của 10 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
   ) %>% 
   hc_subtitle(
     text = str_glue("Ngày số liệu: {strftime(max(df$yq) + months(3) - days(1), format = '%d/%m/%Y')}"),
     style = list(fontStyle = "italic", color = "#666666")
   )
+
