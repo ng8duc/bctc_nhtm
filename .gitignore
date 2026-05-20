@@ -15,3 +15,6 @@
 
 # AI Agents
 .agents/
+
+# Ignore start here.R
+start here.R

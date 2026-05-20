@@ -1,52 +1,46 @@
-df_nim <- df_nim %>% 
+df_nim <- df_nim %>%
   mutate(chi_tieu = "NIM")
 
-df_chenh_lech_lai_suat_dau_ra_dau_vao <- df_chenh_lech_lai_suat_dau_ra_dau_vao %>% 
+df_chenh_lech_lai_suat_dau_ra_dau_vao <- df_chenh_lech_lai_suat_dau_ra_dau_vao %>%
   mutate(chi_tieu = "CLLS đầu ra - đầu vào")
 
-df <- bind_rows(df_nim, df_chenh_lech_lai_suat_dau_ra_dau_vao) %>% 
+df <- bind_rows(df_nim, df_chenh_lech_lai_suat_dau_ra_dau_vao) %>%
+  mutate(yq = as.Date(yq)) %>%
   filter(name == "BQ 27 NHTM") %>%
   filter(!is.na(value))
 
-tick_vals <- df %>%
-  distinct(yq) %>%
-  arrange(yq) %>%
-  filter(month(yq) == month(first(yq))) %>%
-  pull(yq)
+df <- df %>%
+  mutate(tick_labels = str_c(3 * quarter(yq), "T_", year(yq)))
 
-tick_labels <- str_c(3 * quarter(tick_vals), "T_", year(tick_vals))
-
-chart_nim <- plot_ly(df, colors = c("#006b68", "#fdb71a")) %>%
-  add_trace(
-    x = ~yq,
-    y = ~value,
-    color = ~chi_tieu,
-    type = "scatter",
-    mode = "lines+markers",
-    hoverlabel = list(align = "left"),
-    hovertemplate = ~ str_c(
-      "<b>Kỳ: ", 3 * quarter(yq), "T_", year(yq), "</b><br>",
-      "Chỉ tiêu: ", chi_tieu, "<br>",
-      "Giá trị: ", sprintf("%.1f%%", value * 100),
-      "<extra></extra>"
-    )
+chart_nim <- highchart() %>%
+  hc_colors(colors = c("#006b68", "#fdb71a")) %>%
+  hc_add_series(
+    data = df,
+    mapping = hcaes(x = tick_labels, y = value * 100, group = chi_tieu),
+    type = "line",
+    tooltip = list(
+      valueSuffix = "%"
+    ),
+    marker = list(enabled = TRUE, radius = 4)
   ) %>%
-  layout(
-    xaxis = list(
-      title = "",
-      tickmode = "array",
-      tickvals = tick_vals,
-      ticktext = tick_labels
-    ),
-    yaxis = list(
-      title = "",
-      tickformat = ".1%"
-    ),
-    legend = list(
-      orientation = "h",
-      x = 0.5,
-      xanchor = "center",
-      y = 1.1,
-      yanchor = "bottom"
-    )
+  hc_xAxis(
+    gridLineWidth = 1,
+    gridLineColor = "#e6e6e6",
+    categories = df$tick_labels
+  ) %>%
+  hc_yAxis(
+    title = list(text = "%"),
+    gridLineColor = "#e6e6e6"
+  ) %>%
+  hc_tooltip(
+    shared = TRUE,
+    crosshairs = TRUE,
+    valueDecimals = 2
+  ) %>%
+  hc_add_theme(hc_theme_smpl()) %>%
+  hc_legend(
+    align = "center",
+    verticalAlign = "top",
+    layout = "horizontal",
+    symbolRadius = 0
   )
