@@ -1,13 +1,11 @@
 ---
 title: "Chỉ tiêu tài chính các NHTM"
-format:
-  html:
-    embed-resources: true
+format: 
+  dashboard:
     theme: flatty
-    toc: true
-    toc-location: left
+    embed-resources: true
 execute:
-  echo: false    # Không hiển thị code cho TOÀN BỘ các chunk
+  echo: false
   warning: false
 ---
 
@@ -24,44 +22,94 @@ source("R/config.R")
 source("R/get_all_tables.R")
 ```
 
-## An toàn vốn
+# An toàn vốn
 
-## Quy mô - Thị phần
+## Row
 
-### Tổng tài sản
+### {width="100%"}
+
+::: {.card}
+Chưa có thông tin dữ liệu cho phần này.
+:::
+
+# Quy mô - Thị phần
+
+## Row
+
+### {width="33%"}
 
 ```{r}
 source("charts/tts.R")
 chart_tts
 ```
 
-## Chất lượng tài sản
-### Tỷ lệ nợ xấu và tỷ lệ nợ nhóm 2
+### {width="67%"}
+
+::: {.card}
+**Quy mô tổng tài sản**
+
+Biểu đồ bên cạnh thể hiện tổng tài sản của các Ngân hàng Thương mại Cổ phần.
+Số liệu được cập nhật mới nhất từ báo cáo tài chính của các ngân hàng.
+:::
+
+# Chất lượng tài sản
+
+## Row {height="50%"}
+
+### {width="33%"}
+
 ```{r}
 source("charts/ty_le_no_xau.R")
 chart_ty_le_no_xau
 ```
+
+### {width="33%"}
 
 ```{r}
 source("charts/quy_mo_no_xau.R")
 chart_quy_mo_no_xau
 ```
 
+### {width="33%"}
+
 ```{r}
 source("charts/ty_le_bao_phu_no_xau_chung.R")
 chart_ty_le_bao_phu_no_xau_chung
 ```
+
+## Row {height="50%"}
+
+### {width="33%"}
 
 ```{r}
 source("charts/ty_le_bao_phu_no_xau_rieng.R")
 chart_ty_le_bao_phu_no_xau_rieng
 ```
 
-## Hiệu quả sinh lời
+### {width="67%"}
 
-### NIM và chênh lệch lãi suất đầu ra - đầu vào
+::: {.card}
+**Chất lượng tài sản & Nợ xấu**
+
+*   **Tỷ lệ nợ xấu (NPL)**: Phản ánh tỷ lệ phần trăm nợ xấu trên tổng dư nợ.
+*   **Tỷ lệ bao phủ nợ xấu**: Thể hiện mức độ chuẩn bị phòng ngừa rủi ro của ngân hàng thông qua trích lập dự phòng.
+:::
+
+# Hiệu quả sinh lời
+
+## Row
+
+### {width="33%"}
 
 ```{r}
 source("charts/nim.R")
 chart_nim
 ```
+
+### {width="67%"}
+
+::: {.card}
+**Hiệu quả sinh lời (NIM)**
+
+NIM (Net Interest Margin) là tỷ lệ thu nhập lãi thuần, đo lường sự chênh lệch giữa thu nhập lãi từ các tài sản sinh lời và chi phí lãi phải trả cho các nguồn vốn huy động.
+:::
