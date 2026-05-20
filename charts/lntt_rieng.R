@@ -83,7 +83,7 @@ chart_lntt_rieng <- highchart() %>%
     text = ifelse(
       month(max(df$yq)) == 10,
       "Lũy kế cả năm",
-      str_glue("Lũy kế {month(max(df$yq)) + 2} tháng đầu năm")
+      str_glue("Lũy kế {month(max(df$yq)) + 2} tháng đầu năm {year(max(df$yq))}")
     ),
     style = list(fontStyle = "italic", color = "#666666")
   )
