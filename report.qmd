@@ -31,8 +31,30 @@ source("R/get_all_tables.R")
 ### Tổng tài sản
 
 ```{r}
-source("charts/tong_tai_san.R")
+source("charts/tts.R")
 chart_tts
+```
+
+## Chất lượng tài sản
+### Tỷ lệ nợ xấu và tỷ lệ nợ nhóm 2
+```{r}
+source("charts/ty_le_no_xau.R")
+chart_ty_le_no_xau
+```
+
+```{r}
+source("charts/quy_mo_no_xau.R")
+chart_quy_mo_no_xau
+```
+
+```{r}
+source("charts/ty_le_bao_phu_no_xau_chung.R")
+chart_ty_le_bao_phu_no_xau_chung
+```
+
+```{r}
+source("charts/ty_le_bao_phu_no_xau_rieng.R")
+chart_ty_le_bao_phu_no_xau_rieng
 ```
 
 ## Hiệu quả sinh lời

@@ -1,18 +1,15 @@
-df_nim <- df_nim %>%
-  mutate(chi_tieu = "NIM")
+df_ty_le_no_xau <- df_ty_le_no_xau %>%
+  mutate(chi_tieu = "Tỷ lệ nợ xấu")
 
-df_chenh_lech_lai_suat_dau_ra_dau_vao <- df_chenh_lech_lai_suat_dau_ra_dau_vao %>%
-  mutate(chi_tieu = "CLLS đầu ra - đầu vào")
+df_ty_le_no_nhom_2 <- df_ty_le_no_nhom_2 %>%
+  mutate(chi_tieu = "Tỷ lệ nợ nhóm 2")
 
-df <- bind_rows(df_nim, df_chenh_lech_lai_suat_dau_ra_dau_vao) %>%
+df <- bind_rows(df_ty_le_no_xau, df_ty_le_no_nhom_2) %>%
   mutate(yq = as.Date(yq)) %>%
   filter(name == "BQ 27 NHTM") %>%
   filter(!is.na(value))
 
-df <- df %>%
-  mutate(tick_labels = str_c(3 * quarter(yq), "T_", year(yq)))
-
-chart_nim <- highchart() %>%
+chart_ty_le_no_xau <- highchart() %>%
   hc_colors(colors = c("#006b68", "#fdb71a")) %>%
   hc_add_series(
     data = df,
@@ -30,9 +27,13 @@ chart_nim <- highchart() %>%
     labels = list(
       formatter = JS("function() {
         var date = new Date(this.value);
-        var month = date.getUTCMonth() + 1;
-        var quarter = Math.ceil(month / 3);
-        return (quarter * 3) + 'T_' + date.getUTCFullYear();
+        var year = date.getUTCFullYear();
+        var lastMonthOfQuarter = date.getUTCMonth() + 3;
+        var lastDayOfQuarter = new Date(Date.UTC(year, lastMonthOfQuarter, 0));
+        var day = lastDayOfQuarter.getUTCDate();
+        var displayMonth = lastDayOfQuarter.getUTCMonth() + 1;
+        
+        return day + '/' + displayMonth + '/' + year;
       }")
     )
   ) %>%
@@ -46,9 +47,12 @@ chart_nim <- highchart() %>%
     valueDecimals = 2,
     formatter = JS("function(tooltip) {
       var date = new Date(this.x);
-      var month = date.getUTCMonth() + 1;
-      var quarter = Math.ceil(month / 3);
-      var xLabel = (quarter * 3) + 'T_' + date.getUTCFullYear();
+      var year = date.getUTCFullYear();
+      var lastMonthOfQuarter = date.getUTCMonth() + 3;
+      var lastDayOfQuarter = new Date(Date.UTC(year, lastMonthOfQuarter, 0));
+      var day = lastDayOfQuarter.getUTCDate();
+      var displayMonth = lastDayOfQuarter.getUTCMonth() + 1;
+      var xLabel = day + '/' + displayMonth + '/' + year;
       
       var s = '<b>' + xLabel + '</b><br/>';
       this.points.forEach(function(point) {
@@ -65,8 +69,7 @@ chart_nim <- highchart() %>%
     layout = "horizontal",
     symbolRadius = 0
   ) %>% 
-  hc_chart(zoomType = "x") %>% 
   hc_title(
-    text = "Chênh lệch lãi suất và NIM bình quân của 27 NHTM niêm yết",
+    text = "Tỷ lệ nợ xấu và nợ nhóm 2 bình quân của 27 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
   )
