@@ -1,15 +1,17 @@
-df <- df_ty_le_bao_phu_no_xau %>%
-  filter(name == "BQ 27 NHTM",
-         !is.na(value)) %>% 
-  mutate(yq = as.Date(yq))
+df <- df_ty_trong_du_no_tdh %>% 
+  mutate(yq = as.Date(yq)) %>% 
+  filter(
+    name == "BQ 27 NHTM",
+    !is.na(value)
+  )
 
-chart_ty_le_bao_phu_no_xau_chung <- highchart() %>%
+chart_ty_le_du_no_tdh <- highchart() %>%
   hc_colors(colors = c("#006b68", "#fdb71a")) %>%
   hc_add_series(
     data = df,
     mapping = hcaes(x = yq, y = value * 100),
     type = "line",
-    name = "Tỷ lệ bao phủ nợ xấu",
+    name = "Tỷ lệ dư nợ trung, dài hạn/tín dụng",
     tooltip = list(
       valueSuffix = "%"
     ),
@@ -65,6 +67,6 @@ chart_ty_le_bao_phu_no_xau_chung <- highchart() %>%
     symbolRadius = 0
   ) %>% 
   hc_title(
-    text = "Tỷ lệ bao phủ nợ xấu bình quân của 27 NHTM niêm yết",
+    text = "Tỷ lệ dư nợ trung, dài hạn/tín dụng bình quân của 27 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
   )

@@ -196,3 +196,32 @@ chart_tlr_rieng
 ::::
 
 # Thanh khoản
+
+## Row {height="50%"}
+
+### {width="50%"}
+```{r}
+source("charts/ty_le_du_no_huy_dong.R")
+chart_ty_le_du_no_huy_dong
+```
+
+### {width="50%"}
+```{r}
+source("charts/ty_le_du_no_tdh.R")
+chart_ty_le_du_no_tdh
+```
+
+## Row {height="50%"}
+
+### {width="50%"}
+```{r}
+source("charts/ty_le_du_no_tdh_rieng.R")
+chart_ty_le_du_no_tdh_rieng
+```
+
+### {width="50%"}
+```{r}
+source("charts/ty_le_casa.R")
+chart_ty_le_casa
+```
+
