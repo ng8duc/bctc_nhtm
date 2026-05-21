@@ -115,6 +115,36 @@ source("charts/lntt_rieng.R")
 chart_lntt_rieng
 ```
 
+# Hiệu quả (1)
+
+## Row {height="50%"}
+
+### {width="50%"}
+```{r}
+source("charts/roa.R")
+chart_roa
+```
+
+### {width="50%"}
+```{r}
+source("charts/roa_rieng.R")
+chart_roa_rieng
+```
+
+## Row {height="50%"}
+
+### {width="50%"}
+```{r}
+source("charts/roe.R")
+chart_roe
+```
+
+### {width="50%"}
+```{r}
+source("charts/roe_rieng.R")
+chart_roe_rieng
+```
+
 
 # Hiệu quả sinh lời
 
