@@ -71,14 +71,14 @@ chart_quy_mo_no_nhom_2
 
 ## Row {height="50%"}
 
-### {width="33%"}
+### {width="50%"}
 
 ```{r}
 source("charts/ty_le_bao_phu_no_xau_rieng.R")
 chart_ty_le_bao_phu_no_xau_rieng
 ```
 
-### {width="67%"}
+### {width="50%"}
 
 ```{r}
 source("charts/ty_le_bao_phu_no_xau_chung.R")
