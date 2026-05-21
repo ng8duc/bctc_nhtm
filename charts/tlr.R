@@ -1,20 +1,16 @@
-df_nim <- df_nim %>%
-  mutate(chi_tieu = "NIM")
+df <- df_ty_trong_thu_lai_rong %>% 
+  mutate(yq = as.Date(yq)) %>% 
+  filter(
+    name == "BQ 27 NHTM"
+  )
 
-df_chenh_lech_lai_suat_dau_ra_dau_vao <- df_chenh_lech_lai_suat_dau_ra_dau_vao %>%
-  mutate(chi_tieu = "CLLS đầu ra - đầu vào")
-
-df <- bind_rows(df_nim, df_chenh_lech_lai_suat_dau_ra_dau_vao) %>%
-  mutate(yq = as.Date(yq)) %>%
-  filter(name == "BQ 27 NHTM") %>%
-  filter(!is.na(value))
-
-chart_nim <- highchart() %>%
+chart_tlr <- highchart() %>%
   hc_colors(colors = c("#006b68", "#fdb71a")) %>%
   hc_add_series(
     data = df,
-    mapping = hcaes(x = yq, y = value * 100, group = chi_tieu),
+    mapping = hcaes(x = yq, y = value * 100),
     type = "line",
+    name = "Tỷ trọng thu lãi thuần/tổng thu nhập hoạt động",
     tooltip = list(
       valueSuffix = "%"
     ),
@@ -64,10 +60,10 @@ chart_nim <- highchart() %>%
   ) %>% 
   hc_chart(zoomType = "x") %>% 
   hc_title(
-    text = "Chênh lệch lãi suất và NIM bình quân của 27 NHTM niêm yết",
+    text = "Tỷ trọng thu lãi thuần/tổng thu nhập hoạt động bình quân của 27 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
   ) %>% 
   hc_subtitle(
-    text = "Annualized",
+    text = "Trừ dự phòng rủi ro",
     style = list(fontStyle = "italic", color = "#666666")
   )

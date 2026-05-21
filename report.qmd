@@ -115,53 +115,84 @@ source("charts/lntt_rieng.R")
 chart_lntt_rieng
 ```
 
-# Hiệu quả (1)
+# Hiệu quả
 
-## Row {height="50%"}
+## Row {.tabset}
 
-### {width="50%"}
+### ROA, ROE
+
+:::: {.rows}
+
+::: {.columns}
+::: {.card}
 ```{r}
 source("charts/roa.R")
 chart_roa
 ```
+:::
 
-### {width="50%"}
+::: {.card}
 ```{r}
 source("charts/roa_rieng.R")
 chart_roa_rieng
 ```
+:::
+:::
 
-## Row {height="50%"}
-
-### {width="50%"}
+::: {.columns}
+::: {.card}
 ```{r}
 source("charts/roe.R")
 chart_roe
 ```
+:::
 
-### {width="50%"}
+::: {.card}
 ```{r}
 source("charts/roe_rieng.R")
 chart_roe_rieng
 ```
+:::
+:::
 
+::::
 
-# Hiệu quả sinh lời
+### Thu lãi
 
-## Row
+:::: {.rows}
 
-### {width="33%"}
-
+::: {.columns}
+::: {.card}
 ```{r}
 source("charts/nim.R")
 chart_nim
 ```
-
-### {width="67%"}
-
-::: {.card}
-**Hiệu quả sinh lời (NIM)**
-
-NIM (Net Interest Margin) là tỷ lệ thu nhập lãi thuần, đo lường sự chênh lệch giữa thu nhập lãi từ các tài sản sinh lời và chi phí lãi phải trả cho các nguồn vốn huy động.
 :::
 
+::: {.card}
+```{r}
+source("charts/nim_rieng.R")
+chart_nim_rieng
+```
+:::
+:::
+
+::: {.columns}
+::: {.card}
+```{r}
+source("charts/tlr.R")
+chart_tlr
+```
+:::
+
+::: {.card}
+```{r}
+source("charts/tlr_rieng.R")
+chart_tlr_rieng
+```
+:::
+:::
+
+::::
+
+# Thanh khoản
