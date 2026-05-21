@@ -14,16 +14,6 @@ source("R/config.R")
 source("R/get_all_tables.R")
 ```
 
-# An toàn vốn
-
-## Row
-
-### {width="100%"}
-
-::: {.card}
-Chưa có thông tin dữ liệu cho phần này.
-:::
-
 # Quy mô - Thị phần
 
 ## Row
@@ -42,6 +32,16 @@ chart_tts
 
 Biểu đồ bên cạnh thể hiện tổng tài sản của các Ngân hàng Thương mại Cổ phần.
 Số liệu được cập nhật mới nhất từ báo cáo tài chính của các ngân hàng.
+:::
+
+# An toàn vốn
+
+## Row
+
+### {width="100%"}
+
+::: {.card}
+Chưa có thông tin dữ liệu cho phần này.
 :::
 
 # Chất lượng tài sản
