@@ -10,8 +10,14 @@ execute:
 ---
 
 ```{r, echo=FALSE}
+library(targets)
 source("R/config.R")
-source("R/get_all_tables.R")
+
+# Tải danh sách dataframe đã được lưu cache trong targets pipeline
+all_tables <- tar_read(all_tables)
+
+# Unpack toàn bộ dataframe trong list ra môi trường Global Environment (.GlobalEnv)
+invisible(list2env(all_tables, envir = .GlobalEnv))
 ```
 
 # Quy mô - Thị phần
