@@ -10,7 +10,7 @@ chart_roa <- highchart() %>%
     data = df,
     mapping = hcaes(x = yq, y = value * 100),
     type = "column",
-    name = "Tỷ lệ ROA bình quân (%)",
+    name = "Tỷ lệ ROA bình quân",
     tooltip = list(
       valueSuffix = "%"
     ),
@@ -64,7 +64,7 @@ chart_roa <- highchart() %>%
     symbolRadius = 0
   ) %>% 
   hc_title(
-    text = "Tỷ lệ ROA quân của 27 NHTM niêm yết",
+    text = "Tỷ lệ ROA bình quân của 27 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
   ) %>% 
   hc_subtitle(
