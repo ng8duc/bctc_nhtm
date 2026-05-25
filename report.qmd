@@ -22,7 +22,7 @@ invisible(list2env(all_tables, envir = .GlobalEnv))
 
 # Quy mô - Thị phần
 
-## Row
+## Row {height="50%"}
 
 ### {width="33%"}
 
@@ -31,13 +31,24 @@ source("charts/tts.R")
 chart_tts
 ```
 
-### {width="67%"}
+### {width="33%"}
+
+```{r}
+source("charts/tin_dung.R")
+chart_tin_dung
+```
+
+### {width="33%"}
+
+```{r}
+source("charts/huy_dong_von.R")
+chart_huy_dong_von
+```
+
+## Row {height="50%"}
 
 ::: {.card}
-**Quy mô tổng tài sản**
-
-Biểu đồ bên cạnh thể hiện tổng tài sản của các Ngân hàng Thương mại Cổ phần.
-Số liệu được cập nhật mới nhất từ báo cáo tài chính của các ngân hàng.
+Chưa có thông tin dữ liệu cho phần này.
 :::
 
 # An toàn vốn
@@ -163,7 +174,7 @@ chart_roe_rieng
 
 ::::
 
-### Thu lãi
+### Thu từ lãi
 
 :::: {.rows}
 
