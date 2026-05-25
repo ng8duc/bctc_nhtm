@@ -47,9 +47,19 @@ chart_huy_dong_von
 
 ## Row {height="50%"}
 
-::: {.card}
-Chưa có thông tin dữ liệu cho phần này.
-:::
+### {width="50%"}
+
+```{r}
+source("charts/thi_phan_tin_dung.R")
+chart_thi_phan_tin_dung
+```
+
+### {width="50%"}
+
+```{r}
+source("charts/thi_phan_tien_gui.R")
+chart_thi_phan_tien_gui
+```
 
 # An toàn vốn
 
