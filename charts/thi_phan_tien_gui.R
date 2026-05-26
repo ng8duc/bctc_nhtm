@@ -32,7 +32,7 @@ df <- df %>%
   ungroup() %>% 
   filter(yq == max(yq))
 
-df <- bind_rows(filter(df, name != "Khác"), filter(df, name == "Khác"))
+df <- bind_rows(filter(df, name != "Khác") %>% arrange(desc(share)), filter(df, name == "Khác"))
 
 
 chart_thi_phan_tien_gui <- highchart() %>% 
