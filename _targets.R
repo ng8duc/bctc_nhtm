@@ -33,6 +33,7 @@ list(
   # 3. Target tự động render dashboard khi dữ liệu (all_tables) thay đổi
   tar_quarto(
     dashboard_report,
-    "report.qmd"
+    "report.qmd",
+    quiet = FALSE
   )
 )

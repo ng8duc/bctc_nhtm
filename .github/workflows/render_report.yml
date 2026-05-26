@@ -27,7 +27,7 @@ jobs:
 
       - name: Install R packages
         run: |
-          Rscript -e 'install.packages(c("jsonlite", "glue", "tidyverse", "plotly", "dotenv", "here", "highcharter", "targets", "tarchetypes", "quarto"))'
+          Rscript -e 'install.packages(c("jsonlite", "glue", "tidyverse", "plotly", "dotenv", "here", "highcharter", "targets", "tarchetypes", "quarto", "timetk"))'
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
