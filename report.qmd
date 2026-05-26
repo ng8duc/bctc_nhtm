@@ -222,6 +222,50 @@ chart_tlr_rieng
 
 ::::
 
+### Thu ngoài lãi
+
+:::: {.rows}
+
+::: {.columns}
+::: {.card}
+```{r}
+source("charts/thu_dvr.R")
+chart_thu_dvr
+```
+:::
+
+::: {.card}
+```{r}
+source("charts/thu_ck.R")
+chart_thu_ck
+```
+:::
+
+::: {.card}
+```{r}
+source("charts/thu_fx.R")
+chart_thu_fx
+```
+:::
+:::
+
+::: {.columns}
+
+::: {.card}
+```{r}
+source("charts/co_cau_thu_ngoai_lai.R")
+chart_co_cau_thu_ngoai_lai
+```
+:::
+
+::: {.card}
+Chưa có thông tin dữ liệu cho phần này.
+:::
+
+:::
+
+::::
+
 # Thanh khoản
 
 ## Row {height="50%"}
