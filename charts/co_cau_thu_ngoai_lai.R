@@ -90,7 +90,7 @@ chart_co_cau_thu_ngoai_lai <- highchart() %>%
     mapping = hcaes(x = yq, y = growth_rate_yoy),
     type = "line",
     marker = list(enabled = TRUE, radius = 5),
-    name = "Tăng trưởng YOY",
+    name = "Tăng trưởng thu ngoài lãi YOY",
     color = "#006b68",
     yAxis = 1,
     dataLabels = list(
