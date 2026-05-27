@@ -19,7 +19,7 @@ chart_roe_rieng <- highchart() %>%
     data = df,
     mapping = hcaes(x = name, y = value * 100, color = mau_cot),
     type = "column",
-    name = "Tỷ lệ ROE (%)",
+    name = "Tỷ lệ ROE",
     color = "#006b68",
     yAxis = 0,
     dataLabels = list(

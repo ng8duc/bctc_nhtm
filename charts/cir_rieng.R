@@ -1,11 +1,12 @@
-df <- df_roa %>%
+df <- df_ty_le_cir %>% 
+  mutate(yq = as.Date(yq))
+
+df <- df %>% 
   filter(nchar(name) == 3,
-         !is.na(value)) %>% 
-  mutate(yq = as.Date(yq)) %>% 
-  filter(yq == max(yq)) %>% 
+         yq == max(yq)) %>% 
   mutate(mau_cot = ifelse(name == "BID", "#fdb71a", "#006b68"))
 
-chart_roa_rieng <- highchart() %>% 
+chart_cir_rieng <- highchart() %>% 
   hc_yAxis(
     title = list(text = "%"),
     gridLineColor = "#e6e6e6"
@@ -19,7 +20,7 @@ chart_roa_rieng <- highchart() %>%
     data = df,
     mapping = hcaes(x = name, y = value * 100, color = mau_cot),
     type = "column",
-    name = "Tỷ lệ ROA",
+    name = "Tỷ lệ CIR",
     color = "#006b68",
     yAxis = 0,
     dataLabels = list(
@@ -45,14 +46,14 @@ chart_roa_rieng <- highchart() %>%
   ) %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
-    text = "Tỷ lệ ROA của 10 NHTM niêm yết",
+    text = "Tỷ lệ CIR của 10 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
   ) %>% 
   hc_subtitle(
     text = ifelse(
       month(max(df$yq)) == 10,
-      "Bình quân cả năm",
-      str_glue("Bình quân {month(max(df$yq)) + 2} tháng đầu năm {year(max(df$yq))}, annualized")
+      "Lũy kế cả năm",
+      str_glue("Lũy kế {month(max(df$yq)) + 2} tháng đầu năm {year(max(df$yq))}")
     ),
     style = list(fontStyle = "italic", color = "#666666")
   )

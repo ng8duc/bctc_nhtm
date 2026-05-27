@@ -278,6 +278,34 @@ chart_thu_ck
 
 ::::
 
+### Chi phí
+
+:::: {.rows}
+
+::: {.columns}
+::: {.card}
+```{r}
+source("charts/cir.R")
+chart_cir
+```
+:::
+::: {.card}
+```{r}
+source("charts/cir_rieng.R")
+chart_cir_rieng
+```
+:::
+:::
+
+:::{.card}
+```{r}
+source("charts/dprr_rieng.R")
+chart_dprr_rieng
+```
+:::
+
+::::
+
 # Thanh khoản
 
 ## Row {height="50%"}
