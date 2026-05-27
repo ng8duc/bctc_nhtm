@@ -297,11 +297,20 @@ chart_cir_rieng
 :::
 :::
 
+::: {.columns}
+:::{.card}
+```{r}
+source("charts/dprr.R")
+chart_dprr
+```
+:::
+
 :::{.card}
 ```{r}
 source("charts/dprr_rieng.R")
 chart_dprr_rieng
 ```
+:::
 :::
 
 ::::
