@@ -4,7 +4,7 @@ df <- df_ty_trong_thu_lai_rong %>%
     name == "BQ 27 NHTM"
   )
 
-chart_tlr <- highchart() %>%
+chart_ty_trong_thu_lai <- highchart() %>%
   hc_colors(colors = c("#006b68", "#fdb71a")) %>%
   hc_add_series(
     data = df,

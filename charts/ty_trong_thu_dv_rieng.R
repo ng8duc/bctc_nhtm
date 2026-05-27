@@ -1,11 +1,11 @@
-df <- df_ty_trong_thu_lai_rong %>% 
+df <- df_ty_trong_thu_dvr %>% 
   filter(nchar(name) == 3,
          !is.na(value)) %>% 
   mutate(yq = as.Date(yq)) %>% 
   filter(yq == max(yq)) %>% 
   mutate(mau_cot = ifelse(name == "BID", "#fdb71a", "#006b68"))
 
-chart_tlr_rieng <- highchart() %>% 
+chart_ty_trong_thu_dv_rieng <- highchart() %>% 
   hc_yAxis(
     title = list(text = "%"),
     gridLineColor = "#e6e6e6"
@@ -19,7 +19,7 @@ chart_tlr_rieng <- highchart() %>%
     data = df,
     mapping = hcaes(x = name, y = value * 100, color = mau_cot),
     type = "column",
-    name = "Tỷ trọng thu lãi thuần/tổng thu nhập hoạt động (%)",
+    name = "Tỷ trọng thu DV thuần/tổng thu nhập hoạt động (%)",
     color = "#006b68",
     yAxis = 0,
     dataLabels = list(
@@ -45,7 +45,7 @@ chart_tlr_rieng <- highchart() %>%
   ) %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
-    text = "Tỷ trọng thu lãi thuần/tổng thu nhập hoạt động 10 NHTM niêm yết",
+    text = "Tỷ trọng thu DV thuần/tổng thu nhập hoạt động 10 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
   ) %>% 
   hc_subtitle(

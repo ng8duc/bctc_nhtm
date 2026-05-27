@@ -207,15 +207,15 @@ chart_nim_rieng
 ::: {.columns}
 ::: {.card}
 ```{r}
-source("charts/tlr.R")
-chart_tlr
+source("charts/ty_trong_thu_lai.R")
+chart_ty_trong_thu_lai
 ```
 :::
 
 ::: {.card}
 ```{r}
-source("charts/tlr_rieng.R")
-chart_tlr_rieng
+source("charts/ty_trong_thu_lai_rieng.R")
+chart_ty_trong_thu_lai_rieng
 ```
 :::
 :::
@@ -227,29 +227,6 @@ chart_tlr_rieng
 :::: {.rows}
 
 ::: {.columns}
-::: {.card}
-```{r}
-source("charts/thu_dvr.R")
-chart_thu_dvr
-```
-:::
-
-::: {.card}
-```{r}
-source("charts/thu_ck.R")
-chart_thu_ck
-```
-:::
-
-::: {.card}
-```{r}
-source("charts/thu_fx.R")
-chart_thu_fx
-```
-:::
-:::
-
-::: {.columns}
 
 ::: {.card}
 ```{r}
@@ -259,7 +236,42 @@ chart_co_cau_thu_ngoai_lai
 :::
 
 ::: {.card}
-Chưa có thông tin dữ liệu cho phần này.
+```{r}
+source("charts/ty_trong_thu_dv.R")
+chart_ty_trong_thu_dv
+```
+:::
+
+::: {.card}
+```{r}
+source("charts/ty_trong_thu_dv_rieng.R")
+chart_ty_trong_thu_dv_rieng
+```
+:::
+
+:::
+
+::: {.columns}
+
+::: {.card}
+```{r}
+source("charts/thu_dvr.R")
+chart_thu_dvr
+```
+:::
+
+::: {.card}
+```{r}
+source("charts/thu_fx.R")
+chart_thu_fx
+```
+:::
+
+::: {.card}
+```{r}
+source("charts/thu_ck.R")
+chart_thu_ck
+```
 :::
 
 :::
