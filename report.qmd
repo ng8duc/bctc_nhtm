@@ -2,8 +2,11 @@
 title: "Chỉ tiêu tài chính các NHTM"
 format: 
   dashboard:
-    theme: flatty
+    theme: 
+      - flatly
+      - custom.scss
     embed-resources: true
+    logo: https://img.icons8.com/fluency/48/bank-building.png
 execute:
   echo: false
   warning: false

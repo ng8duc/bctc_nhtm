@@ -1,0 +1,150 @@
+/*-- scss:defaults --*/
+
+// ===== Typography =====
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+$font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-size-base: 0.9rem;
+$headings-font-weight: 600;
+
+// ===== Color Palette - Teal tông phù hợp với Highcharts (#006b68) =====
+$primary:   #006b68;
+$secondary: #4a8c89;
+$success:   #28a745;
+$info:      #17a2b8;
+$warning:   #fdb71a;
+$danger:    #dc3545;
+$light:     #f8f9fa;
+$dark:      #1a2332;
+
+// ===== Card & Layout =====
+$card-border-width: 0;
+$card-border-radius: 10px;
+$card-cap-bg: transparent;
+
+// ===== Navbar =====
+$navbar-bg: $dark;
+$navbar-fg: #ffffff;
+
+// ===== Body =====
+$body-bg: #f0f2f5;
+$body-color: #2d3748;
+
+/*-- scss:rules --*/
+
+// ===== Navbar styling =====
+.navbar {
+  background: linear-gradient(135deg, #1a2332 0%, #006b68 100%) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  padding: 0.6rem 1.2rem;
+
+  .navbar-brand, .navbar-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  .navbar-nav .nav-link {
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    margin: 0 2px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    &.active {
+      background: rgba(255, 255, 255, 0.2);
+      font-weight: 600;
+    }
+  }
+}
+
+// ===== Card styling =====
+.card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.25s ease;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  }
+
+  .card-header {
+    background: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.75rem 1rem;
+  }
+
+  .card-body {
+    padding: 0.75rem;
+  }
+}
+
+// ===== Dashboard page/tab content =====
+.dashboard-page {
+  padding: 0.75rem;
+}
+
+// ===== Tabset styling =====
+.nav-tabs {
+  border-bottom: 2px solid #e2e8f0;
+
+  .nav-link {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: #718096;
+    border: none;
+    padding: 0.65rem 1.2rem;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $primary;
+      border-bottom-color: rgba($primary, 0.3);
+      background: transparent;
+    }
+
+    &.active {
+      color: $primary;
+      font-weight: 600;
+      border-bottom-color: $primary;
+      background: transparent;
+    }
+  }
+}
+
+// ===== Scrollbar (Webkit) =====
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+
+  &:hover {
+    background: #a1a1a1;
+  }
+}
+
+// ===== Smooth transitions =====
+* {
+  scroll-behavior: smooth;
+}
