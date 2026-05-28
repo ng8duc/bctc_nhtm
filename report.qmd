@@ -63,13 +63,42 @@ chart_thi_phan_tien_gui
 
 # An toàn vốn
 
-## Row
+## Row {height="50%"}
 
-### {width="100%"}
+### {width="33%"}
 
-::: {.card}
-Chưa có thông tin dữ liệu cho phần này.
-:::
+```{r}
+source("charts/vcsh_tts.R")
+chart_vcsh_tts
+```
+
+### {width="33%"}
+
+```{r}
+source("charts/vcsh_tts_rieng.R")
+chart_vcsh_tts_rieng
+```
+
+### {width="33%"}
+```{r}
+source("charts/car.R")
+chart_car
+```
+
+## Row {height="50%"}
+
+### {width="50%"}
+```{r}
+source("charts/vcsh.R")
+chart_vcsh
+```
+
+### {width="50%"}
+```{r}
+source("charts/von_dieu_le.R")
+chart_von_dieu_le
+```
+
 
 # Chất lượng tài sản
 

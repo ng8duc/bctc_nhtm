@@ -1,13 +1,17 @@
-df <- df_ty_le_bao_phu_no_xau %>%
-  mutate(yq = as.Date(yq)) %>% 
-  filter(nchar(name) == 3,
-         !is.na(value),
-         yq == max(yq)) %>% 
-  mutate(
-    mau_cot = ifelse(name != "BID", "#006b68", "#fdb71a")
-  )
-  
-chart_ty_le_bao_phu_no_xau_rieng <- highchart() %>% 
+df <- df_car %>% 
+  mutate(date = as.Date(date))
+
+df <- df %>% 
+  filter(date == max(date)) %>% 
+  pivot_longer(-c(date), names_to = "name", values_to = "value")
+
+df <- df %>% 
+  mutate(mau_cot = ifelse(name == "BID", "#fdb71a", "#006b68"))
+
+df <- df %>% 
+  arrange(desc(value))
+
+chart_car <- highchart() %>% 
   hc_yAxis(
     title = list(text = "%"),
     gridLineColor = "#e6e6e6"
@@ -19,9 +23,9 @@ chart_ty_le_bao_phu_no_xau_rieng <- highchart() %>%
   ) %>% 
   hc_add_series(
     data = df,
-    mapping = hcaes(x = name, y = value * 100, color = mau_cot),
+    mapping = hcaes(x = name, y = value, color = mau_cot),
     type = "column",
-    name = "Tỷ lệ bao phủ nợ xấu",
+    name = "Tỷ lệ an toàn vốn (CAR)",
     color = "#006b68",
     yAxis = 0,
     dataLabels = list(
@@ -47,10 +51,10 @@ chart_ty_le_bao_phu_no_xau_rieng <- highchart() %>%
   ) %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
-    text = "Tỷ lệ bao phủ nợ xấu của 10 NHTM niêm yết",
+    text = "Tỷ lệ an toàn vốn (CAR) của 10 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
-    ) %>% 
+  ) %>% 
   hc_subtitle(
-    text = str_glue("Ngày số liệu: {strftime(max(df$yq) + months(3) - days(1), format = '%d/%m/%Y')}"),
+    text = str_glue("Ngày số liệu: {strftime(max(df$date), format = '%d/%m/%Y')}"),
     style = list(fontStyle = "italic", color = "#666666")
   )

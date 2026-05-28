@@ -1,13 +1,12 @@
-df <- df_ty_le_bao_phu_no_xau %>%
-  mutate(yq = as.Date(yq)) %>% 
+df <- df_ty_le_von_csh_tts %>% 
+  mutate(yq = as.Date(yq))
+
+df <- df %>% 
   filter(nchar(name) == 3,
-         !is.na(value),
          yq == max(yq)) %>% 
-  mutate(
-    mau_cot = ifelse(name != "BID", "#006b68", "#fdb71a")
-  )
-  
-chart_ty_le_bao_phu_no_xau_rieng <- highchart() %>% 
+  mutate(mau_cot = ifelse(name != "BID", "#006b68", "#fdb71a"))
+
+chart_vcsh_tts_rieng <- highchart() %>% 
   hc_yAxis(
     title = list(text = "%"),
     gridLineColor = "#e6e6e6"
@@ -21,7 +20,7 @@ chart_ty_le_bao_phu_no_xau_rieng <- highchart() %>%
     data = df,
     mapping = hcaes(x = name, y = value * 100, color = mau_cot),
     type = "column",
-    name = "Tỷ lệ bao phủ nợ xấu",
+    name = "Tỷ lệ vốn chủ sở hữu/tổng tài sản",
     color = "#006b68",
     yAxis = 0,
     dataLabels = list(
@@ -47,9 +46,9 @@ chart_ty_le_bao_phu_no_xau_rieng <- highchart() %>%
   ) %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
-    text = "Tỷ lệ bao phủ nợ xấu của 10 NHTM niêm yết",
+    text = "Tỷ lệ vốn chủ sở hữu/tổng tài sản của 10 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
-    ) %>% 
+  ) %>% 
   hc_subtitle(
     text = str_glue("Ngày số liệu: {strftime(max(df$yq) + months(3) - days(1), format = '%d/%m/%Y')}"),
     style = list(fontStyle = "italic", color = "#666666")
