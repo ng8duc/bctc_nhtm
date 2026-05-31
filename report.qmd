@@ -4,9 +4,9 @@ format:
   dashboard:
     theme: 
       - flatly
-      - custom.scss
+      - assets/custom.scss
     embed-resources: false
-    logo: https://img.icons8.com/fluency/48/bank-building.png
+    logo: assets/logo.png
 execute:
   echo: false
   warning: false

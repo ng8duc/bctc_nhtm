@@ -53,6 +53,7 @@ jobs:
           cp report.html build/index.html
           cp report.html build/report.html
           if [ -d "report_files" ]; then cp -r report_files build/; fi
+          cp -r assets build/
 
       - name: Publish to Cloudflare Pages
         env:
