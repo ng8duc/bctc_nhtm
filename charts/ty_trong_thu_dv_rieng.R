@@ -49,11 +49,12 @@ chart_ty_trong_thu_dv_rieng <- highchart() %>%
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
   ) %>% 
   hc_subtitle(
-    text = ifelse(
+    text = str_c(ifelse(
       month(max(df$yq)) == 10,
       "Lũy kế cả năm",
       str_glue("Lũy kế {month(max(df$yq)) + 2} tháng đầu năm {year(max(df$yq))}")
     ),
+    "\nTổng thu nhập hoạt động chưa trừ chi phí dự phòng rủi ro"),
     style = list(fontStyle = "italic", color = "#666666")
   )
 
