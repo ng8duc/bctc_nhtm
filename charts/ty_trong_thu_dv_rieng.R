@@ -54,7 +54,7 @@ chart_ty_trong_thu_dv_rieng <- highchart() %>%
       "Lũy kế cả năm",
       str_glue("Lũy kế {month(max(df$yq)) + 2} tháng đầu năm {year(max(df$yq))}")
     ),
-    "\nTổng thu nhập hoạt động chưa trừ chi phí dự phòng rủi ro"),
+    "<br>Tổng thu nhập hoạt động chưa trừ chi phí dự phòng rủi ro"),
     style = list(fontStyle = "italic", color = "#666666")
   )
 
