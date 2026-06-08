@@ -31,37 +31,6 @@ $body-color: #2d3748;
 
 /*-- scss:rules --*/
 
-// ===== Navbar styling =====
-.navbar {
-  background: linear-gradient(135deg, #1a2332 0%, #006b68 100%) !important;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
-  padding: 0.6rem 1.2rem;
-
-  .navbar-brand, .navbar-title {
-    font-weight: 700;
-    font-size: 1.25rem;
-    letter-spacing: -0.02em;
-  }
-
-  .navbar-nav .nav-link {
-    font-weight: 500;
-    font-size: 0.85rem;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-    margin: 0 2px;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    &.active {
-      background: rgba(255, 255, 255, 0.2);
-      font-weight: 600;
-    }
-  }
-}
-
 // ===== Card styling =====
 .card {
   background: #ffffff;
@@ -91,37 +60,9 @@ $body-color: #2d3748;
   }
 }
 
-// ===== Dashboard page/tab content =====
-.dashboard-page {
-  padding: 0.75rem;
-}
-
-// ===== Tabset styling =====
-.nav-tabs {
-  border-bottom: 2px solid #e2e8f0;
-
-  .nav-link {
-    font-weight: 500;
-    font-size: 0.85rem;
-    color: #718096;
-    border: none;
-    padding: 0.65rem 1.2rem;
-    border-bottom: 3px solid transparent;
-    transition: all 0.2s ease;
-
-    &:hover {
-      color: $primary;
-      border-bottom-color: rgba($primary, 0.3);
-      background: transparent;
-    }
-
-    &.active {
-      color: $primary;
-      font-weight: 600;
-      border-bottom-color: $primary;
-      background: transparent;
-    }
-  }
+// ===== Ẩn default Quarto navbar (dùng custom nav) =====
+.navbar {
+  display: none !important;
 }
 
 // ===== Scrollbar (Webkit) =====
