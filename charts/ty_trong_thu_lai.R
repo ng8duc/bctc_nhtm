@@ -25,7 +25,7 @@ chart_ty_trong_thu_lai <- highchart() %>%
         var date = new Date(this.value);
         var month = date.getUTCMonth() + 1;
         var quarter = Math.ceil(month / 3);
-        return (quarter * 3) + 'T_' + date.getUTCFullYear();
+        return (quarter * 3) + 'T/' + date.getUTCFullYear();
       }")
     )
   ) %>%
@@ -41,7 +41,7 @@ chart_ty_trong_thu_lai <- highchart() %>%
       var date = new Date(this.x);
       var month = date.getUTCMonth() + 1;
       var quarter = Math.ceil(month / 3);
-      var xLabel = (quarter * 3) + 'T_' + date.getUTCFullYear();
+      var xLabel = (quarter * 3) + 'T/' + date.getUTCFullYear();
       
       var s = '<b>' + xLabel + '</b><br/>';
       this.points.forEach(function(point) {
