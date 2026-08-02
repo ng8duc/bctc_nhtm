@@ -61,9 +61,11 @@ chart_ty_trong_thu_lai <- highchart() %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
     text = "Tỷ trọng thu lãi thuần/tổng thu nhập hoạt động bình quân của 27 NHTM niêm yết",
-    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
+    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
+    align = 'center'
   ) %>% 
   hc_subtitle(
     text = "Trừ dự phòng rủi ro",
-    style = list(fontStyle = "italic", color = "#666666")
+    style = list(fontStyle = "italic", color = "#666666"),
+    align = 'center'
   )

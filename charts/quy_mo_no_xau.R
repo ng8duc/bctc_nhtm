@@ -1,7 +1,7 @@
 df1 <- df_quy_mo_no_xau %>% 
   mutate(yq = as.Date(yq)) %>% 
   filter(nchar(name) == 3) %>% 
-  filter(yq == as.Date("2026-01-01")) %>%
+  filter(yq == max(yq)) %>%
   arrange(desc(value)) %>%
   mutate(
     mau_cot = ifelse(name != "BID", "#006b68", "#fdb71a"),
@@ -12,7 +12,7 @@ df2 <- df_ty_le_no_xau %>%
   mutate(yq = as.Date(yq),
          value = value*100) %>% 
   filter(nchar(name) == 3) %>% 
-  filter(yq == as.Date("2026-01-01")) %>% 
+  filter(yq == max(yq)) %>% 
   rename(ty_le_no_xau := value)
 
 df <- full_join(df1, df2)
@@ -83,9 +83,11 @@ chart_quy_mo_no_xau <- highchart() %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
     text = "Quy mô nợ xấu của 10 NHTM niêm yết",
-    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
+    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
+    align = 'center'
   ) %>% 
   hc_subtitle(
     text = str_glue("Ngày số liệu: {strftime(max(df$yq) + months(3) - days(1), format = '%d/%m/%Y')}"),
-    style = list(fontStyle = "italic", color = "#666666")
+    style = list(fontStyle = "italic", color = "#666666"),
+    align = 'center'
   )

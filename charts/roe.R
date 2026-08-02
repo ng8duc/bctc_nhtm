@@ -8,7 +8,7 @@ chart_roe <- highchart() %>%
   hc_colors(colors = c("#006b68", "#fdb71a")) %>%
   hc_add_series(
     data = df,
-    mapping = hcaes(x = yq, y = value * 100),
+    mapping = hcaes(x = glue('{month(yq)+2}T/{year(yq)}'), y = value * 100),
     type = "column",
     name = "Tỷ lệ ROE bình quân",
     tooltip = list(
@@ -21,18 +21,9 @@ chart_roe <- highchart() %>%
     )
   ) %>%
   hc_xAxis(
-    type = "datetime",
+    type = "category",
     gridLineWidth = 1,
-    gridLineColor = "#e6e6e6",
-    labels = list(
-      formatter = JS("function() {
-        var date = new Date(this.value);
-        var year = date.getUTCFullYear();
-        var lastMonthOfQuarter = date.getUTCMonth() + 3;
-        
-        return lastMonthOfQuarter + 'T/' + year;
-      }")
-    )
+    gridLineColor = "#e6e6e6"
   ) %>%
   hc_yAxis(
     title = list(text = "%"),
@@ -43,12 +34,7 @@ chart_roe <- highchart() %>%
     crosshairs = TRUE,
     valueDecimals = 2,
     formatter = JS("function(tooltip) {
-      var date = new Date(this.x);
-      var year = date.getUTCFullYear();
-      var lastMonthOfQuarter = date.getUTCMonth() + 3;
-      var xLabel = lastMonthOfQuarter + 'T/' + year;
-      
-      var s = '<b>' + xLabel + '</b><br/>';
+      var s = '<b>' + this.points[0].key + '</b><br/>';
       this.points.forEach(function(point) {
         s += '<span style=\"color:' + point.color + '\">●</span> ' + 
              point.series.name + ': <b>' + Highcharts.numberFormat(point.y, 2) + '%</b><br/>';
@@ -65,9 +51,11 @@ chart_roe <- highchart() %>%
   ) %>% 
   hc_title(
     text = "Tỷ lệ ROE bình quân của 27 NHTM niêm yết",
-    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
+    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
+    align = 'center'
   ) %>% 
   hc_subtitle(
     text = str_glue("Annualized"),
-    style = list(fontStyle = "italic", color = "#666666")
+    style = list(fontStyle = "italic", color = "#666666"),
+    align = 'center'
   )

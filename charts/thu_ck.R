@@ -53,9 +53,11 @@ chart_thu_ck <- highchart() %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
     text = "Thu thuần từ kinh doanh chứng khoán của 10 NHTM niêm yết",
-    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
+    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
+    align = 'center'
   ) %>% 
   hc_subtitle(
     text = str_glue("Lũy kế {month(max(df$yq)) + 2} tháng đầu năm {year(max(df$yq))}"),
-    style = list(fontStyle = "italic", color = "#666666")
+    style = list(fontStyle = "italic", color = "#666666"),
+    align = 'center'
   )

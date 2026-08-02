@@ -65,9 +65,11 @@ chart_nim <- highchart() %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
     text = "Chênh lệch lãi suất và NIM bình quân của 27 NHTM niêm yết",
-    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
+    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
+    align = 'center'
   ) %>% 
   hc_subtitle(
     text = "Annualized",
-    style = list(fontStyle = "italic", color = "#666666")
+    style = list(fontStyle = "italic", color = "#666666"),
+    align = 'center'
   )

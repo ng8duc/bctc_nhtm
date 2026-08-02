@@ -41,5 +41,6 @@ chart_dprr_rieng <- highchart() %>%
   ) %>% 
   hc_title(
     text = "Tỷ lệ chi phí DPRR/tổng thu nhập của 10 NHTM niêm yết",
-    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
+    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
+    align = 'center'
   )

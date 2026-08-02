@@ -46,7 +46,8 @@ chart_roa_rieng <- highchart() %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
     text = "Tỷ lệ ROA của 10 NHTM niêm yết",
-    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
+    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
+    align = 'center'
   ) %>% 
   hc_subtitle(
     text = ifelse(
@@ -54,5 +55,6 @@ chart_roa_rieng <- highchart() %>%
       "Bình quân cả năm",
       str_glue("Bình quân {month(max(df$yq)) + 2} tháng đầu năm {year(max(df$yq))}, annualized")
     ),
-    style = list(fontStyle = "italic", color = "#666666")
+    style = list(fontStyle = "italic", color = "#666666"),
+    align = 'center'
   )

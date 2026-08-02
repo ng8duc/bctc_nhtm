@@ -62,12 +62,14 @@ chart_thi_phan_tin_dung <- highchart() %>%
       )
     )
   ) %>%
-  hc_add_theme(hc_theme_google()) %>%
+  hc_add_theme(hc_theme_smpl()) %>%
   hc_title(
     text = "Thị phần tín dụng của các NHTM",
-    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
+    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
+    align = 'center'
   ) %>%
   hc_subtitle(
     text = str_glue("Ngày số liệu: {strftime(max(df$yq) + months(3) - days(1), format = '%d/%m/%Y')}"),
-    style = list(fontStyle = "italic", color = "#666666")
+    style = list(fontStyle = "italic", color = "#666666"),
+    align = 'center'
   )

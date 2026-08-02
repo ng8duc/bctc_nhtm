@@ -52,9 +52,11 @@ chart_car <- highchart() %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
     text = "Tỷ lệ an toàn vốn (CAR) của 10 NHTM niêm yết",
-    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
+    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
+    align = 'center'
   ) %>% 
   hc_subtitle(
     text = str_glue("Ngày số liệu: {strftime(max(df$date), format = '%d/%m/%Y')}"),
-    style = list(fontStyle = "italic", color = "#666666")
+    style = list(fontStyle = "italic", color = "#666666"),
+    align = 'center'
   )

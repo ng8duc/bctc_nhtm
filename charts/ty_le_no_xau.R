@@ -72,5 +72,6 @@ chart_ty_le_no_xau <- highchart() %>%
   ) %>% 
   hc_title(
     text = "Tỷ lệ nợ xấu và nợ nhóm 2 bình quân của 27 NHTM niêm yết",
-    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
+    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
+    align = 'center'
   )

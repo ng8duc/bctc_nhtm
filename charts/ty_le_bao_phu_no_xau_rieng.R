@@ -48,9 +48,11 @@ chart_ty_le_bao_phu_no_xau_rieng <- highchart() %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
     text = "Tỷ lệ bao phủ nợ xấu của 10 NHTM niêm yết",
-    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
+    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
+    align = 'center'
     ) %>% 
   hc_subtitle(
     text = str_glue("Ngày số liệu: {strftime(max(df$yq) + months(3) - days(1), format = '%d/%m/%Y')}"),
-    style = list(fontStyle = "italic", color = "#666666")
+    style = list(fontStyle = "italic", color = "#666666"),
+    align = 'center'
   )

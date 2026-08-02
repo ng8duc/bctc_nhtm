@@ -13,7 +13,7 @@ df <- df %>%
 
 df_long <- df %>%
   filter(nchar(name) == 3) %>%
-  filter(yq == as.Date("2026-01-01")) %>%
+  filter(yq == max(yq)) %>%
   arrange(desc(value)) %>%
   mutate(
     mau_cot = ifelse(name != "BID", "#006b68", "#fdb71a"),
@@ -86,9 +86,11 @@ chart_tts <- highchart() %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
     text = "Tổng tài sản của 10 NHTM niêm yết",
-    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333")
+    style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
+    align = 'center'
   ) %>% 
   hc_subtitle(
     text = str_glue("Ngày số liệu: {strftime(max(df_long$yq) + months(3) - days(1), format = '%d/%m/%Y')}"),
-    style = list(fontStyle = "italic", color = "#666666")
+    style = list(fontStyle = "italic", color = "#666666"),
+    align = 'center'
   )
