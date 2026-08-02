@@ -84,7 +84,7 @@ html {
 .report-section {
   padding: 0.5rem 1.5rem 1rem 1.5rem !important;
   /* Giảm padding-bottom từ 2rem xuống 1rem */
-  max-width: 1920px;
+  max-width: 1260px;
   margin: 0 auto !important;
   /* Giảm margin-top từ 2rem xuống 1rem và dùng !important để override các style mặc định */
 }
@@ -99,11 +99,31 @@ html {
   border-bottom: 3px solid #006b68;
 }
 
-/* ----- Chart grid: 3 cột, tỷ lệ 3:2, min 600x400 ----- */
-.chart-grid {
+.report-section h2 {
+  color: #1a2332;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #fdb71a;
+}
+
+/* ----- Các loại chart-grid ----- */
+.chart-grid1 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto 20px 0;
+}
+
+.chart-grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1220px;
+  margin: 0 auto 20px auto;
 }
 
 .chart-item {
@@ -145,15 +165,22 @@ html {
 
 /* ----- Responsive ----- */
 
-@media (max-width: 1500px) {
-  .chart-grid {
+@media (max-width: 1800px) {
+  .chart-grid3 {
     grid-template-columns: repeat(2, 1fr);
+    max-width: 1220px;
   }
 }
 
-@media (max-width: 900px) {
-  .chart-grid {
+@media (max-width: 1250px) {
+  .chart-grid3 {
     grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+
+  .chart-grid2 {
+    grid-template-columns: 1fr;
+    max-width: 600px;
   }
 
   .report-nav {

@@ -44,7 +44,7 @@ invisible(list2env(all_tables, envir = .GlobalEnv))
 
 # Quy mô - Thị phần
 
-::: {.chart-grid}
+::: {.chart-grid1}
 
 :::: {.chart-item}
 ```{r}
@@ -52,6 +52,10 @@ source("charts/tts.R")
 chart_tts
 ```
 ::::
+
+:::
+
+::: {.chart-grid2}
 
 :::: {.chart-item}
 ```{r}
@@ -62,15 +66,15 @@ chart_tin_dung
 
 :::: {.chart-item}
 ```{r}
-source("charts/huy_dong_von.R")
-chart_huy_dong_von
+source("charts/thi_phan_tin_dung.R")
+chart_thi_phan_tin_dung
 ```
 ::::
 
 :::: {.chart-item}
 ```{r}
-source("charts/thi_phan_tin_dung.R")
-chart_thi_phan_tin_dung
+source("charts/huy_dong_von.R")
+chart_huy_dong_von
 ```
 ::::
 
@@ -89,7 +93,18 @@ chart_thi_phan_tien_gui
 
 # An toàn vốn
 
-::: {.chart-grid}
+::: {.chart-grid1}
+
+:::: {.chart-item}
+```{r}
+source("charts/car.R")
+chart_car
+```
+::::
+
+:::
+
+::: {.chart-grid2}
 
 :::: {.chart-item}
 ```{r}
@@ -102,13 +117,6 @@ chart_vcsh_tts
 ```{r}
 source("charts/vcsh_tts_rieng.R")
 chart_vcsh_tts_rieng
-```
-::::
-
-:::: {.chart-item}
-```{r}
-source("charts/car.R")
-chart_car
 ```
 ::::
 
@@ -134,7 +142,7 @@ chart_von_dieu_le
 
 # Chất lượng tài sản
 
-::: {.chart-grid}
+::: {.chart-grid1}
 
 :::: {.chart-item}
 ```{r}
@@ -142,6 +150,10 @@ source("charts/ty_le_no_xau.R")
 chart_ty_le_no_xau
 ```
 ::::
+
+:::
+
+::: {.chart-grid2}
 
 :::: {.chart-item}
 ```{r}
@@ -179,7 +191,7 @@ chart_ty_le_bao_phu_no_xau_chung
 
 # Lợi nhuận
 
-::: {.chart-grid}
+::: {.chart-grid2}
 
 :::: {.chart-item}
 ```{r}
@@ -219,7 +231,7 @@ chart_lntt_rieng
 
 ## ROA, ROE
 
-::: {.chart-grid}
+::: {.chart-grid2}
 
 :::: {.chart-item}
 ```{r}
@@ -253,7 +265,7 @@ chart_roe_rieng
 
 ## Thu từ lãi
 
-::: {.chart-grid}
+::: {.chart-grid1}
 
 :::: {.chart-item}
 ```{r}
@@ -261,6 +273,10 @@ source("charts/thu_lai.R")
 chart_thu_lai
 ```
 ::::
+
+:::
+
+::: {.chart-grid2}
 
 :::: {.chart-item}
 ```{r}
@@ -294,12 +310,19 @@ chart_nim_rieng
 
 ## Thu ngoài lãi
 
-::: {.chart-grid}
+::: {.chart-grid2}
 
 :::: {.chart-item}
 ```{r}
 source("charts/co_cau_thu_ngoai_lai.R")
 chart_co_cau_thu_ngoai_lai
+```
+::::
+
+:::: {.chart-item}
+```{r}
+source("charts/thu_dvr.R")
+chart_thu_dvr
 ```
 ::::
 
@@ -314,13 +337,6 @@ chart_ty_trong_thu_dv
 ```{r}
 source("charts/ty_trong_thu_dv_rieng.R")
 chart_ty_trong_thu_dv_rieng
-```
-::::
-
-:::: {.chart-item}
-```{r}
-source("charts/thu_dvr.R")
-chart_thu_dvr
 ```
 ::::
 
@@ -342,7 +358,7 @@ chart_thu_ck
 
 ## Chi phí
 
-::: {.chart-grid}
+::: {.chart-grid2}
 
 :::: {.chart-item}
 ```{r}
@@ -379,12 +395,19 @@ chart_dprr_rieng
 
 # Thanh khoản
 
-::: {.chart-grid}
+::: {.chart-grid2}
 
 :::: {.chart-item}
 ```{r}
 source("charts/ty_le_du_no_huy_dong.R")
 chart_ty_le_du_no_huy_dong
+```
+::::
+
+:::: {.chart-item}
+```{r}
+source("charts/ty_le_casa.R")
+chart_ty_le_casa
 ```
 ::::
 
@@ -399,13 +422,6 @@ chart_ty_le_du_no_tdh
 ```{r}
 source("charts/ty_le_du_no_tdh_rieng.R")
 chart_ty_le_du_no_tdh_rieng
-```
-::::
-
-:::: {.chart-item}
-```{r}
-source("charts/ty_le_casa.R")
-chart_ty_le_casa
 ```
 ::::
 
