@@ -42,7 +42,6 @@ chart_roa <- highchart() %>%
       return s;
     }")
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
@@ -58,4 +57,4 @@ chart_roa <- highchart() %>%
     text = str_glue("Annualized"),
     style = list(fontStyle = "italic", color = "#666666"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

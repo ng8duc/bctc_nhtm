@@ -29,7 +29,7 @@ chart_co_cau_thu_ngoai_lai <- highchart() %>%
       gridLineColor = "#e6e6e6"
     ),
     list(
-      title = list(text = "Tăng trưởng YOY (%)"),
+      title = list(text = NULL),
       opposite = TRUE,
       gridLineWidth = 0, # Ẩn vạch kẻ ngang của trục thứ hai để tránh rối mắt
       labels = list(format = "{value:,.1f}%")
@@ -44,37 +44,37 @@ chart_co_cau_thu_ngoai_lai <- highchart() %>%
     data = df,
     mapping = hcaes(x = glue('{month(yq)+2}T/{year(yq)}'), y = `Thu dịch vụ thuần` / 1000),
     type = "column",
-    name = "Thu dịch vụ thuần",
+    name = "Dịch vụ",
   ) %>% 
   hc_add_series(
     data = df,
     mapping = hcaes(x = glue('{month(yq)+2}T/{year(yq)}'), y = `Thu thuần từ chứng khoán kinh doanh` / 1000),
     type = "column",
-    name = "Thu thuần từ chứng khoán kinh doanh",
+    name = "Chứng khoán kinh doanh",
   ) %>% 
   hc_add_series(
     data = df,
     mapping = hcaes(x = glue('{month(yq)+2}T/{year(yq)}'), y = `Thu thuần từ chứng khoán đầu tư` / 1000),
     type = "column",
-    name = "Thu thuần từ chứng khoán đầu tư",
+    name = "Chứng khoán đầu tư",
   ) %>% 
   hc_add_series(
     data = df,
     mapping = hcaes(x = glue('{month(yq)+2}T/{year(yq)}'), y = `Thu thuần từ kinh doanh ngoại hối` / 1000),
     type = "column",
-    name = "Thu thuần từ kinh doanh ngoại hối",
+    name = "Kinh doanh ngoại hối",
   ) %>% 
   hc_add_series(
     data = df,
     mapping = hcaes(x = glue('{month(yq)+2}T/{year(yq)}'), y = `Thu thuần từ góp vốn, mua cổ phần` / 1000),
     type = "column",
-    name = "Thu thuần từ góp vốn, mua cổ phần",
+    name = "Góp vốn, mua cổ phần",
   ) %>% 
   hc_add_series(
     data = df,
     mapping = hcaes(x = glue('{month(yq)+2}T/{year(yq)}'), y = `Thu thuần từ hoạt động khác` / 1000),
     type = "column",
-    name = "Thu thuần từ hoạt động khác",
+    name = "Hoạt động khác",
   ) %>% 
   hc_add_series(
     data = df,
@@ -101,14 +101,13 @@ chart_co_cau_thu_ngoai_lai <- highchart() %>%
       var s = '<b>' + this.points[0].key + '</b><br/>';
       this.points.forEach(function(point) {
         // Áp dụng đơn vị tương ứng với từng series
-        var suffix = point.series.name === 'Tăng trưởng YOY' ? '%' : ' nghìn tỷ đồng';
+        var suffix = point.series.name === 'Tăng trưởng thu ngoài lãi YOY' ? '%' : ' nghìn tỷ đồng';
         s += '<span style=\"color:' + point.color + '\">●</span> ' + 
              point.series.name + ': <b>' + Highcharts.numberFormat(point.y, 2) + suffix + '</b><br/>';
       });
       return s;
     }")
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
@@ -122,4 +121,4 @@ chart_co_cau_thu_ngoai_lai <- highchart() %>%
     text = "Cơ cấu và tăng trưởng thu ngoài lãi của 27 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

@@ -11,11 +11,11 @@ df <- df %>%
 chart_thu_lai <- highchart() %>%
   hc_yAxis_multiples(
     list(
-      title = list(text = "Thu lãi thuần (nghìn tỷ đồng)"),
+      title = list(text = "nghìn tỷ đồng"),
       gridLineColor = "#e6e6e6"
     ),
     list(
-      title = list(text = "Tăng trưởng YOY (%)"),
+      title = list(text = NULL),
       opposite = TRUE,
       gridLineWidth = 0, # Ẩn vạch kẻ ngang của trục thứ hai để tránh rối mắt
       labels = list(format = "{value:,.1f}%")
@@ -73,7 +73,6 @@ chart_thu_lai <- highchart() %>%
       return s;
     }")
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
@@ -90,4 +89,4 @@ chart_thu_lai <- highchart() %>%
     text = "Trừ dự phòng rủi ro",
     style = list(fontStyle = "italic", color = "#666666"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

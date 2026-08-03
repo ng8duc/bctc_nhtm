@@ -55,7 +55,6 @@ chart_nim <- highchart() %>%
       return s;
     }")
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
@@ -72,4 +71,4 @@ chart_nim <- highchart() %>%
     text = "Annualized",
     style = list(fontStyle = "italic", color = "#666666"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

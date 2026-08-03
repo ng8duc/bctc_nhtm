@@ -43,7 +43,6 @@ chart_thu_ck <- highchart() %>%
     crosshairs = TRUE,
     valueDecimals = 2
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
@@ -60,4 +59,4 @@ chart_thu_ck <- highchart() %>%
     text = str_glue("Lũy kế {month(max(df$yq)) + 2} tháng đầu năm {year(max(df$yq))}"),
     style = list(fontStyle = "italic", color = "#666666"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

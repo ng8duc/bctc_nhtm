@@ -9,7 +9,7 @@ chart_vcsh_tts <- highchart() %>%
     data = df,
     mapping = hcaes(x = yq, y = value * 100),
     type = "line",
-    name = "Tỷ lệ vốn chủ sở hữu/tổng tài sản",
+    name = "Vốn chủ sở hữu/tổng tài sản",
     color = "#006b68",
     tooltip = list(
       valueSuffix = "%"
@@ -58,7 +58,6 @@ chart_vcsh_tts <- highchart() %>%
       return s;
     }")
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
@@ -66,7 +65,7 @@ chart_vcsh_tts <- highchart() %>%
     symbolRadius = 0
   ) %>% 
   hc_title(
-    text = "Tỷ lệ vốn chủ sở hữu/tổng tài sản bình quân của 27 NHTM niêm yết",
+    text = "Vốn chủ sở hữu/tổng tài sản bình quân của 27 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

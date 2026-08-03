@@ -39,8 +39,7 @@ chart_ty_le_no_xau <- highchart() %>%
   ) %>%
   hc_yAxis(
     title = list(text = "%"),
-    gridLineColor = "#e6e6e6",
-    labels = list(format = "{value:,.1f}%")
+    gridLineColor = "#e6e6e6"
   ) %>%
   hc_tooltip(
     shared = TRUE,
@@ -63,7 +62,6 @@ chart_ty_le_no_xau <- highchart() %>%
       return s;
     }")
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
@@ -74,4 +72,4 @@ chart_ty_le_no_xau <- highchart() %>%
     text = "Tỷ lệ nợ xấu và nợ nhóm 2 bình quân của 27 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

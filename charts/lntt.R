@@ -8,11 +8,11 @@ df <- df_loi_nhuan_truoc_thue %>%
 chart_lntt <- highchart() %>%
   hc_yAxis_multiples(
     list(
-      title = list(text = "Lợi nhuận trước thuế (nghìn tỷ đồng)"),
+      title = list(text = "nghìn tỷ đồng"),
       gridLineColor = "#e6e6e6"
     ),
     list(
-      title = list(text = "Tăng trưởng YOY (%)"),
+      title = list(text = NULL),
       opposite = TRUE,
       gridLineWidth = 0, # Ẩn vạch kẻ ngang của trục thứ hai để tránh rối mắt
       labels = list(format = "{value:,.1f}%")
@@ -70,7 +70,6 @@ chart_lntt <- highchart() %>%
       return s;
     }")
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
@@ -82,4 +81,4 @@ chart_lntt <- highchart() %>%
     text = "Tổng lợi nhuận trước thuế của 27 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

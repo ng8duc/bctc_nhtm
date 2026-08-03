@@ -59,7 +59,6 @@ chart_ty_le_du_no_tdh <- highchart() %>%
       return s;
     }")
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
@@ -70,4 +69,4 @@ chart_ty_le_du_no_tdh <- highchart() %>%
     text = "Tỷ lệ dư nợ trung, dài hạn/tín dụng bình quân của 27 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

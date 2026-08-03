@@ -20,7 +20,7 @@ chart_vcsh_tts_rieng <- highchart() %>%
     data = df,
     mapping = hcaes(x = name, y = value * 100, color = mau_cot),
     type = "column",
-    name = "Tỷ lệ vốn chủ sở hữu/tổng tài sản",
+    name = "Vốn chủ sở hữu/tổng tài sản",
     color = "#006b68",
     yAxis = 0,
     dataLabels = list(
@@ -37,7 +37,6 @@ chart_vcsh_tts_rieng <- highchart() %>%
     crosshairs = TRUE,
     valueDecimals = 2
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
@@ -46,7 +45,7 @@ chart_vcsh_tts_rieng <- highchart() %>%
   ) %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
-    text = "Tỷ lệ vốn chủ sở hữu/tổng tài sản của 10 NHTM niêm yết",
+    text = "Vốn chủ sở hữu/tổng tài sản của 10 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
     align = 'center'
   ) %>% 
@@ -54,4 +53,4 @@ chart_vcsh_tts_rieng <- highchart() %>%
     text = str_glue("Ngày số liệu: {strftime(max(df$yq) + months(3) - days(1), format = '%d/%m/%Y')}"),
     style = list(fontStyle = "italic", color = "#666666"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

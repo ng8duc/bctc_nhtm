@@ -37,7 +37,6 @@ chart_ty_le_du_no_tdh_rieng <- highchart() %>%
     crosshairs = TRUE,
     valueDecimals = 2
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
@@ -54,4 +53,4 @@ chart_ty_le_du_no_tdh_rieng <- highchart() %>%
     text = str_glue("Ngày số liệu: {strftime(max(df$yq) + months(3) - days(1), format = '%d/%m/%Y')}"),
     style = list(fontStyle = "italic", color = "#666666"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

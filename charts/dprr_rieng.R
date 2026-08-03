@@ -28,7 +28,6 @@ chart_dprr_rieng <- highchart() %>%
       valueSuffix = "%"
     )
   )  %>% 
-  hc_add_theme(hc_theme_smpl()) %>% 
   hc_tooltip(
     shared = TRUE,
     crosshairs = TRUE,
@@ -40,7 +39,7 @@ chart_dprr_rieng <- highchart() %>%
     symbolRadius = 0
   ) %>% 
   hc_title(
-    text = "Tỷ lệ chi phí DPRR/tổng thu nhập của 10 NHTM niêm yết",
+    text = "Chi phí DPRR/tổng thu nhập của 10 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

@@ -8,11 +8,11 @@ df <- df_chenh_lech_thu_chi %>%
 chart_cltc <- highchart() %>%
   hc_yAxis_multiples(
     list(
-      title = list(text = "Chênh lệch thu chi (nghìn tỷ đồng)"),
+      title = list(text = "nghìn tỷ đồng"),
       gridLineColor = "#e6e6e6"
     ),
     list(
-      title = list(text = "Tăng trưởng YOY (%)"),
+      title = list(text = NULL),
       opposite = TRUE,
       gridLineWidth = 0, # Ẩn vạch kẻ ngang của trục thứ hai để tránh rối mắt
       labels = list(format = "{value:,.1f}%")
@@ -70,7 +70,6 @@ chart_cltc <- highchart() %>%
       return s;
     }")
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
@@ -82,4 +81,4 @@ chart_cltc <- highchart() %>%
     text = "Tổng chênh lệch thu chi của 27 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

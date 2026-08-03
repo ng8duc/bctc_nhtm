@@ -22,11 +22,11 @@ df_long <- df %>%
 chart_huy_dong_von <- highchart() %>%
   hc_yAxis_multiples(
     list(
-      title = list(text = "Huy động vốn (nghìn tỷ đồng)"),
+      title = list(text = "nghìn tỷ đồng"),
       gridLineColor = "#e6e6e6"
     ),
     list(
-      title = list(text = "Tăng trưởng YTD (%)"),
+      title = list(text = NULL),
       opposite = TRUE,
       gridLineWidth = 0, # Ẩn vạch kẻ ngang của trục thứ hai để tránh rối mắt
       labels = list(format = "{value:,.1f}%")
@@ -75,7 +75,6 @@ chart_huy_dong_von <- highchart() %>%
     crosshairs = TRUE,
     valueDecimals = 2
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
@@ -92,4 +91,4 @@ chart_huy_dong_von <- highchart() %>%
     text = str_glue("Ngày số liệu: {strftime(max(df_long$yq) + months(3) - days(1), format = '%d/%m/%Y')}"),
     style = list(fontStyle = "italic", color = "#666666"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

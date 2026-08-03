@@ -57,7 +57,6 @@ chart_ty_le_bao_phu_no_xau_chung <- highchart() %>%
       return s;
     }")
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
@@ -68,4 +67,4 @@ chart_ty_le_bao_phu_no_xau_chung <- highchart() %>%
     text = "Tỷ lệ bao phủ nợ xấu bình quân của 27 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
     align = 'center'
-  )
+  ) %>% hc_export_menu()

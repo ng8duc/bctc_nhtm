@@ -42,14 +42,12 @@ chart_car <- highchart() %>%
     crosshairs = TRUE,
     valueDecimals = 2
   ) %>%
-  hc_add_theme(hc_theme_smpl()) %>%
   hc_legend(
     align = "center",
     verticalAlign = "top",
     layout = "horizontal",
     symbolRadius = 0
   ) %>%
-  hc_chart(zoomType = "x") %>% 
   hc_title(
     text = "Tỷ lệ an toàn vốn (CAR) của 10 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
@@ -59,4 +57,6 @@ chart_car <- highchart() %>%
     text = str_glue("Ngày số liệu: {strftime(max(df$date), format = '%d/%m/%Y')}"),
     style = list(fontStyle = "italic", color = "#666666"),
     align = 'center'
-  )
+  ) %>%
+  hc_chart(zoomType = "x") %>%
+  hc_export_menu()
