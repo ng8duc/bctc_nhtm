@@ -1,8 +1,14 @@
 /*-- scss:defaults --*/
 
 // ===== Typography =====
-// Dùng system font stack, ưu tiên Roboto (có sẵn trên Android/Chrome) — không cần tải từ Google Fonts
-$font-family-sans-serif: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+// Vô hiệu hoá web-font-path của theme flatly (trỏ tới Google Fonts Lato)
+// để tránh @import font online, chỉ dùng font offline/system.
+// Lưu ý: dùng `false` chứ không phải `null`, vì trong Sass `!default`
+// (flatly gán lại $web-font-path ở phần scss:rules) vẫn override giá trị null.
+$web-font-path: false;
+
+// Dùng system font stack, ưu tiên Arial — không cần tải từ Google Fonts
+$font-family-sans-serif: Arial, Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 $font-size-base: 0.9rem;
 $headings-font-weight: 600;
 
