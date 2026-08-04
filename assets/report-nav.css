@@ -165,22 +165,15 @@ html {
 
 /* ----- Responsive ----- */
 
-@media (max-width: 1800px) {
-  .chart-grid3 {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 1220px;
-  }
-}
-
 @media (max-width: 1250px) {
-  .chart-grid3 {
-    grid-template-columns: 1fr;
-    max-width: 600px;
-  }
-
   .chart-grid2 {
     grid-template-columns: 1fr;
     max-width: 600px;
+  }
+
+  .chart-grid1 {
+    margin: 0 auto 20px auto;
+    /* Căn giữa khi responsive về 1 cột */
   }
 
   .report-nav {
