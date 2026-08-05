@@ -54,9 +54,8 @@ jobs:
       - name: Prepare build directory
         run: |
           mkdir -p build
-          cp report.html build/index.html
-          cp report.html build/report.html
-          if [ -d "report_files" ]; then cp -r report_files build/; fi
+          cp index.html build/index.html
+          if [ -d "index_files" ]; then cp -r index_files build/; fi
           cp -r assets build/
 
       - name: Publish to Cloudflare Pages
