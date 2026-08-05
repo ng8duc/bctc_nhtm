@@ -16,8 +16,8 @@
 # AI Agents
 .agents/
 
-# Ignore start here.R
-start here.R
+# Ignore init.R
+init.R
 
 # R targets cache
 /_targets/
