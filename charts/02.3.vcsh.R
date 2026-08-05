@@ -1,4 +1,4 @@
-df <- df_von_dieu_le %>% 
+df <- df_von_csh %>% 
   mutate(yq = as.Date(yq))
 
 df <- df %>% 
@@ -22,7 +22,7 @@ df <- df %>%
     ytd_growth_rate = ytd_growth_rate * 100
   )
 
-chart_von_dieu_le <- highchart() %>%
+chart_vcsh <- highchart() %>%
   hc_yAxis_multiples(
     list(
       title = list(text = "nghìn tỷ đồng"),
@@ -44,12 +44,12 @@ chart_von_dieu_le <- highchart() %>%
     data = df,
     mapping = hcaes(x = name, y = value / 1000, color = mau_cot),
     type = "column",
-    name = "Vốn điều lệ",
+    name = "Vốn chủ sở hữu",
     color = "#006b68",
     yAxis = 0,
     dataLabels = list(
       enabled = TRUE,
-      format = "{point.y:,.2f}", # Hiển thị nhãn giá trị với 2 chữ số thập phân
+      format = "{point.y:,.1f}", # Hiển thị nhãn giá trị với 2 chữ số thập phân
       style = list(fontSize = "10px")
     ),
     tooltip = list(
@@ -66,7 +66,7 @@ chart_von_dieu_le <- highchart() %>%
     yAxis = 1,
     dataLabels = list(
       enabled = TRUE,
-      format = "{point.y:,.2f}%",
+      format = "{point.y:,.1f}%",
       style = list(fontSize = "10px")
     ),
     tooltip = list(
@@ -76,7 +76,7 @@ chart_von_dieu_le <- highchart() %>%
   hc_tooltip(
     shared = TRUE,
     crosshairs = TRUE,
-    valueDecimals = 2
+    valueDecimals = 1
   ) %>%
   hc_legend(
     align = "center",
@@ -86,7 +86,7 @@ chart_von_dieu_le <- highchart() %>%
   ) %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
-    text = "Vốn điều lệ của 10 NHTM niêm yết",
+    text = "Vốn chủ sở hữu của 10 NHTM niêm yết",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
     align = 'center'
   ) %>% 

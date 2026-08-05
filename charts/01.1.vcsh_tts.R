@@ -53,7 +53,7 @@ chart_vcsh_tts <- highchart() %>%
       var s = '<b>' + xLabel + '</b><br/>';
       this.points.forEach(function(point) {
         s += '<span style=\"color:' + point.color + '\">●</span> ' + 
-             point.series.name + ': <b>' + Highcharts.numberFormat(point.y, 2) + '%</b><br/>';
+             point.series.name + ': <b>' + Highcharts.numberFormat(point.y, 1) + '%</b><br/>';
       });
       return s;
     }")

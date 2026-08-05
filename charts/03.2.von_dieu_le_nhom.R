@@ -1,8 +1,9 @@
-df <- df_von_csh %>% 
+df <- df_von_dieu_le %>% 
   mutate(yq = as.Date(yq))
 
 df <- df %>% 
-  filter(nchar(name) == 3)
+  filter(grepl("BQ ", name) | name == "BID") %>% 
+  mutate(mau_cot = ifelse(name != "BID", "#006b68", "#fdb71a"))
 
 df <- df %>%
   group_by(name) %>%
@@ -13,16 +14,11 @@ df <- df %>%
   ) %>%
   ungroup()
 
-df <- df %>%
-  filter(nchar(name) == 3) %>%
-  filter(yq == max(yq)) %>%
-  arrange(desc(value)) %>%
-  mutate(
-    mau_cot = ifelse(name != "BID", "#006b68", "#fdb71a"),
-    ytd_growth_rate = ytd_growth_rate * 100
-  )
+df <- df %>% 
+  filter(yq == max(yq)) %>% 
+  mutate(ytd_growth_rate = ytd_growth_rate*100)
 
-chart_vcsh <- highchart() %>%
+highchart() %>%
   hc_yAxis_multiples(
     list(
       title = list(text = "nghìn tỷ đồng"),
@@ -44,12 +40,12 @@ chart_vcsh <- highchart() %>%
     data = df,
     mapping = hcaes(x = name, y = value / 1000, color = mau_cot),
     type = "column",
-    name = "Vốn chủ sở hữu",
+    name = "Vốn điều lệ",
     color = "#006b68",
     yAxis = 0,
     dataLabels = list(
       enabled = TRUE,
-      format = "{point.y:,.2f}", # Hiển thị nhãn giá trị với 2 chữ số thập phân
+      format = "{point.y:,.1f}", # Hiển thị nhãn giá trị với 2 chữ số thập phân
       style = list(fontSize = "10px")
     ),
     tooltip = list(
@@ -66,7 +62,7 @@ chart_vcsh <- highchart() %>%
     yAxis = 1,
     dataLabels = list(
       enabled = TRUE,
-      format = "{point.y:,.2f}%",
+      format = "{point.y:,.1f}%",
       style = list(fontSize = "10px")
     ),
     tooltip = list(
@@ -76,7 +72,7 @@ chart_vcsh <- highchart() %>%
   hc_tooltip(
     shared = TRUE,
     crosshairs = TRUE,
-    valueDecimals = 2
+    valueDecimals = 1
   ) %>%
   hc_legend(
     align = "center",
@@ -86,7 +82,7 @@ chart_vcsh <- highchart() %>%
   ) %>%
   hc_chart(zoomType = "x") %>% 
   hc_title(
-    text = "Vốn chủ sở hữu của 10 NHTM niêm yết",
+    text = "Vốn điều lệ bình quân theo nhóm ngân hàng",
     style = list(fontWeight = "bold", fontSize = "16px", color = "#333333"),
     align = 'center'
   ) %>% 
